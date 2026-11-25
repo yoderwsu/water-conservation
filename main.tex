@@ -11,6 +11,8 @@
 \usepackage{booktabs,tabularx,array}
 \usepackage{ragged2e}
 \usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{etoolbox}
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{tikz}
@@ -21,6 +23,12 @@
 \newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
 \newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 \setlist{itemsep=2pt,topsep=4pt}
+
+% Spacing: title page and abstract single-spaced; body double-spaced
+% (switched on after the abstract); tables, figures, and captions single-spaced.
+\AtBeginEnvironment{table}{\singlespacing}
+\AtBeginEnvironment{figure}{\singlespacing}
+\captionsetup{font=singlespacing}
 
 % ---------------------------------------------------------------------------
 % Notation (change here to change everywhere)
@@ -41,26 +49,29 @@
 
 \begin{abstract}
 % DRAFT abstract, written from the framework text; revise before submission.
-Conservation programs usually measure success as a drop in withdrawal at the point of use, but river basins respond to changes in depletion and to the timing and location of return flows. We propose a single parameterized framework that links the two. A change identity separates any reported saving into a ``wet'' part that reduces depletion and a ``dry'' part that only removes return flow; a fate equation adds what happens to the freed water (protection, rebound, transfer, or banking); and a routing equation places the resulting gains and losses in space and time. Four basic types of conservation follow from the parameter signatures, and their terms map directly onto two-ledger Sankey diagrams. Worked examples show how the practice with the largest reported saving can deliver the least basin water and, under rebound, increase depletion.
+Conservation programs usually measure success as a drop in withdrawal at the point of use. River basins, however, respond to changes in depletion and to the timing and location of return flows. We propose one parameterized framework that links the two. We use a change identity to divide any reported saving into a ``wet'' part that reduces depletion and a ``dry'' part that only removes return flow. We then add a fate equation for what happens to the freed water (protection, rebound, transfer, or banking) and a routing equation that places the resulting gains and losses in space and time. Four basic types of conservation follow from the parameter signatures, and the terms of the framework map directly onto two-ledger Sankey diagrams. In worked examples, the practice with the largest reported saving delivers the least basin water and, under rebound, increases depletion.
 \end{abstract}
+
+\clearpage
+\doublespacing
 
 % ===========================================================================
 \section{Introduction}\label{sec:intro}
 % ===========================================================================
 
-Conservation programs usually count success as a drop in withdrawal at the point of use. A river basin experiences something different: a change in depletion (water evaporated, transpired, exported, or sent to a sink) and a reshuffling of return flows in space and time. The two quantities can differ in size, and even in sign.
+Conservation programs usually count success as a drop in withdrawal at the point of use. A river basin responds to something else. It responds to the change in depletion, meaning water evaporated, transpired, exported, or sent to a sink. It also responds to shifts in return flows across space and time. The drop in withdrawal and the change in depletion can differ in size, and even in sign.
 
-The evidence for this gap is broad. Basin modeling in the Upper Rio Grande found that subsidies for efficient irrigation can increase depletion \citep{ward2008}. Panel data from western Kansas showed that conversion to more efficient center pivots increased groundwater extraction \citep{pfeiffer2014}. An economic model showed why this is the general case under rational irrigator behavior \citep{contor2013}, a point made earlier on theoretical grounds by \citet{huffaker2003}. A multi-author synthesis named this the paradox of irrigation efficiency and called for full water accounting \citep{grafton2018}. Effects also arise outside agriculture and outside the annual water balance. In the Walla Walla Basin, piping canals over a connected aquifer reduced modeled groundwater storage unless managed aquifer recharge (MAR) replaced the lost seepage \citep{scherberg2018}. Replacing urban lawns saves consumptive use but raises daytime temperatures \citep{vahmani2016,saher2022}.
+Evidence for this gap comes from basin models, field data, economic theory, and urban climate studies. \citet{ward2008} modeled the Upper Rio Grande and found that subsidies for efficient irrigation can increase depletion. \citet{pfeiffer2014} used panel data from western Kansas and found that conversion to more efficient center pivots increased groundwater extraction. \citet{contor2013} used an economic model to show why this outcome is the general case when irrigators behave rationally, a point \citet{huffaker2003} made earlier on theoretical grounds. \citet{grafton2018}, in a multi-author synthesis, called this pattern the irrigation-efficiency paradox and called for full water accounting. The gap also arises outside agriculture and outside the annual water balance. In the Walla Walla Basin, \citet{scherberg2018} found that piping canals over a connected aquifer reduced modeled groundwater storage unless managed aquifer recharge (MAR) replaced the lost seepage. Replacing urban lawns reduces consumptive use but raises daytime temperatures \citep{vahmani2016,saher2022}.
 
-Washington law already draws the key distinction: it defines ``net water savings'' as water conserved and usable in specified reaches without impairing existing rights \citep{rcw9042020}. Practice is less settled. A recent review of conservation in eastern Washington \citep{wadraft2026} found that savings are mostly estimated at the point of use and reported in aggregate, that they are seldom traced to the source, and that agricultural and municipal programs run overlapping practices without coordinating on basin outcomes.
+Washington law already draws the key distinction, but practice is less settled. The law defines ``net water savings'' as water conserved and usable in specified reaches without impairing existing rights \citep{rcw9042020}. A recent review of conservation in eastern Washington \citep{wadraft2026} found that programs mostly estimate savings at the point of use, report them in aggregate, and seldom trace them to the source. The review also found that agricultural and municipal programs run overlapping practices without coordinating on basin outcomes.
 
-The concepts needed to close this gap exist, but they are spread across separate literatures: water-accounting fractions \citep{perry2007,molden1997,karimi2013}; the distinction between ``wet'' and ``dry'' savings \citep{seckler1996}; scale dependence \citep{lankford2020}; and the paracommons, or who gains from a saving \citep{lankford2013,lankford2023}. This paper joins them into one parameterized identity that links a practice's effect at the point of use to basin depletion and to the timing and location of flows. Any practice in any sector can be specified with it. Basic types follow from its specifications, and its terms map directly onto Sankey diagrams. Section~\ref{sec:contribution} compares the framework with the closest published work.
+The concepts needed to close this gap exist, but they are spread across separate literatures. These include water-accounting fractions \citep{perry2007,molden1997,karimi2013}, the distinction between ``wet'' and ``dry'' savings \citep{seckler1996}, scale dependence \citep{lankford2020}, and the paracommons, which concerns who gains from a saving \citep{lankford2013,lankford2023}. This paper joins them in one parameterized identity. The identity links the effect of a practice at the point of use to basin depletion and to the timing and location of flows. It applies to any practice in any sector. Basic types follow from its specifications, and its terms map directly onto Sankey diagrams. Section~\ref{sec:contribution} compares the framework with the closest published work.
 
 % ===========================================================================
 \section{How a practice can change the fate of water}\label{sec:levers}
 % ===========================================================================
 
-A conservation practice can change the fate of water through five levers (Table~\ref{tab:levers}). Only some of them show up as a drop in withdrawal. Most real practices pull more than one lever at once, and the framework in Section~\ref{sec:identity} is built to track all five.
+A conservation practice can change the fate of water through five levers (Table~\ref{tab:levers}). Some levers do not show up as a drop in withdrawal. Most real practices pull more than one lever at once, and we build the framework in Section~\ref{sec:identity} to track all five.
 
 \begin{table}[htbp]
 \centering
@@ -71,21 +82,21 @@ A conservation practice can change the fate of water through five levers (Table~
 Lever & What the practice changes & Terms it moves & Effect on observed withdrawal & Examples \\
 \midrule
 1. Scale & How much of an activity takes place; the split of each unit among fates stays the same & All four components shrink in proportion & Falls & Fallowing, turf removal, shorter showers, outdoor watering limits \\
-2. Partition & How each unit divides among consumption, non-recoverable loss, and return, for the same service & The split among $\Cb$, $\Cn$, $N$, and $R$; required $W$ usually falls & Falls, unless the freed water is re-used & Canal lining, drip or sprinkler conversion, mulch, low-flow fixtures, leak repair \\
-3. Disposition & What happens to water freed by levers 1 and 2 & $\lambda$ shares and the depletion fraction $d$ of the new use & Unchanged under rebound or transfer; falls only when protected & Trust water, re-use under proration, new connections, banking \\
-4. Routing & Where and when diversions and returns occur, volumes roughly unchanged & Return location $j$ and lag kernel $h_{jk}$ & Roughly unchanged & MAR, aquifer storage and recovery, diversion timing, moving an outfall \\
+2. Partition & How each unit divides among consumption, non-recoverable loss, and return, for the same service & The split among $\Cb$, $\Cn$, $N$, and $R$; required $W$ usually falls & Falls, unless the freed water is reused & Canal lining, drip or sprinkler conversion, mulch, low-flow fixtures, leak repair \\
+3. Disposition & What happens to water freed by levers 1 and 2 & $\lambda$ shares and the depletion fraction $d$ of the new use & Unchanged under rebound or transfer; falls only when protected & Trust water, reuse under proration, new connections, banking \\
+4. Routing & Where and when diversions and returns occur, volumes roughly unchanged & Return location $j$ and transfer kernel $h_{jk}$ & Roughly unchanged & MAR, aquifer storage and recovery, diversion timing, moving an outfall \\
 5. Source and quality & Which source supplies $W$, and whether returns stay usable & Which node the change in $W$ applies to; $R$ reclassified as $N$ or $N$ as $R$ & Shifts between sources & Reclaimed water, surface--groundwater substitution, treating or salinizing return flows \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Two consequences shape the equations that follow. First, \emph{observed withdrawal is an unreliable indicator}. $W$ can fall with no change in depletion, when lever~2 removes only $R$; it can also stay flat while depletion rises, when lever~2 is followed by rebound under lever~3. The equations therefore track the change in every component, not $W$ alone. Second, \emph{some practices act on water that is never withdrawn}. Rainwater harvesting, cover crops, and land-cover change alter evapotranspiration (ET) of precipitation. The framework handles them by replacing $W$ with total input $W + P$ (effective precipitation) throughout, which corresponds to the distinction between landscape ET and incremental ET in basin water accounting \citep{karimi2013}.
+Two consequences shape the equations that follow. First, \emph{observed withdrawal is an unreliable indicator}. $W$ can fall with no change in depletion, when lever~2 removes only $R$. $W$ can also stay flat while depletion rises, when rebound under lever~3 follows lever~2. The equations therefore track the change in every component, not $W$ alone. Second, \emph{some practices act on water that is never withdrawn}. Rainwater harvesting, cover crops, and land-cover change alter evapotranspiration (ET) of precipitation. The framework handles them by replacing $W$ with total input $W + P$ throughout, where $P$ is effective precipitation. This substitution matches the distinction in basin water accounting between ET supplied by precipitation and incremental ET supplied by withdrawals \citep{karimi2013}.
 
 % ===========================================================================
 \section{The foundational identity}\label{sec:identity}
 % ===========================================================================
 
-Any practice changes the components of a use's water balance. Equation~\eqref{eq:partition} partitions a use. Equations~\eqref{eq:change} and~\eqref{eq:freed} account for a practice's change and separate the part the basin feels from the part it does not. Equation~\eqref{eq:fate} adds what happens to freed water, and Equation~\eqref{eq:routing} places the effects in space and time.
+Any practice changes the components of the water balance of a use. Equation~\eqref{eq:partition} partitions a use. Equations~\eqref{eq:change} and~\eqref{eq:freed} account for the change a practice makes and separate the part the basin feels from the part it does not. Equation~\eqref{eq:fate} adds what happens to freed water, and Equation~\eqref{eq:routing} places the effects in space and time.
 
 \paragraph{Partition of use.} Take one use within a defined accounting domain, such as a field, a district, or a utility service area. Following \citet{perry2007} and \citet{molden1997}, its withdrawal $W$ divides into depletion $D$ and recoverable return flow $R$:
 \begin{equation}\label{eq:partition}
@@ -95,7 +106,7 @@ $R$ is recoverable return flow: seepage, deep percolation, tailwater, leaks, or 
 \[
   D \equiv \Cb + \Cn + N ,
 \]
-where $\Cb$ is beneficial consumption (ET or incorporation that delivers the intended service, such as crop or landscape ET); $\Cn$ is non-beneficial consumption (soil and canal evaporation, weed and phreatophyte ET); and $N$ is non-recoverable outflow (water that leaves usable reach, such as to a saline sink, the ocean, an out-of-basin export, or an aquifer too deep to pump).
+where $\Cb$ is beneficial consumption, $\Cn$ is non-beneficial consumption, and $N$ is non-recoverable outflow. Beneficial consumption is ET or incorporation that delivers the intended service, such as ET from crops or lawns. Non-beneficial consumption includes soil and canal evaporation and ET from weeds and phreatophytes. Non-recoverable outflow is water that leaves usable reach, such as flow to a saline sink, the ocean, an out-of-basin export, or an aquifer too deep to pump.
 
 \paragraph{Change identity.} A practice moves a use from state 0 (before) to state 1 (after). With $\Delta$ denoting after minus before, the balance must still close:
 \begin{equation}\label{eq:change}
@@ -103,40 +114,40 @@ where $\Cb$ is beneficial consumption (ET or incorporation that delivers the int
   \qquad
   \Delta D = \Delta \Cb + \Delta \Cn + \Delta N .
 \end{equation}
-This holds for every lever, including those that leave $W$ unchanged. Point-of-use reporting sees $-\Delta W$; the basin sees $\Delta D$; the gap between the two is the change in return flow, $\Delta R$. Lever~4 (routing) leaves all four terms nearly unchanged and acts only through Equation~\eqref{eq:routing}. Lever~5 (source) applies Equation~\eqref{eq:change} separately to each source.
+This identity holds for every lever, including those that leave $W$ unchanged. Point-of-use reporting sees $-\Delta W$; the basin sees $\Delta D$; the gap between the two is the change in return flow, $\Delta R$. Lever~4 (routing) leaves all four terms nearly unchanged and acts only through Equation~\eqref{eq:routing}. Lever~5 (source) applies Equation~\eqref{eq:change} separately to each source.
 
-\paragraph{Freed water.} For levers 1 and 2 it helps to separate the technical effect from what is then done with the water. Define $F$, the \emph{freed withdrawal}, as the drop in withdrawal needed to deliver the original activity (lever~2) or the reduced activity (lever~1), before any re-use. $F$ is the number programs usually report. It is a counterfactual quantity, so it need not appear as an observed drop in $W$. Writing $F_X$ for the reduction in component $X$ under that counterfactual,
+\paragraph{Freed water.} For levers 1 and 2, we separate the technical effect from what is then done with the water. Define $F$, the \emph{freed withdrawal}, as the drop in withdrawal needed to deliver the original activity (lever~2) or the reduced activity (lever~1), before any reuse. $F$ is the number programs usually report. It is a counterfactual quantity, so it need not appear as an observed drop in $W$. Writing $F_X$ for the reduction in component $X$ under that counterfactual,
 \begin{equation}\label{eq:freed}
   F \;=\; \underbrace{F_{C_b} + F_{C_n} + F_N}_{\Fwet\ (\text{less depletion})}
   \;+\; \underbrace{F_R}_{\Fdry\ (\text{less return flow})} .
 \end{equation}
-Every unit of $F$ either reduces depletion (a ``wet'' saving) or removes water that was already coming back (a ``dry'' saving), in the terms of \citet{seckler1996}. A positive $F_{C_b}$ also signals lost service, such as fewer irrigated acres or less lawn.
+Every unit of $F$ either reduces depletion (a ``wet'' saving) or removes water that was already coming back (a ``dry'' saving), in the terms of \citet{seckler1996}. A positive $F_{C_b}$ also means lost service, such as fewer irrigated acres or less lawn.
 
-\paragraph{Conservation fate equation.} The freed water $F$ does not disappear. It is divided among destinations $i$ with shares $\lambda_i$ that sum to one: $s$, left in the source and legally protected (for example, as a trust water right); $u$, re-applied by the proprietor (more acres, fuller supply under proration, or new crops); $t$, transferred to another user (such as new housing or a junior right holder); and $b$, deliberately banked or recharged. These correspond to the four ``paracommoners'' of \citet{lankford2023}: proprietor, neighbour, nature, and society. Each destination depletes a fraction $d_i$ of the water it receives. The net change in basin depletion and the \emph{efficacy ratio} $\phi$ are
+\paragraph{Conservation fate equation.} The freed water $F$ does not disappear. It goes to four destinations $i$, in shares $\lambda_i$ that sum to one. Destination $s$ is water left in the source and legally protected, for example as a trust water right. Destination $u$ is water the proprietor re-applies to more acres, a fuller supply under proration, or new crops. Destination $t$ is water transferred to another user, such as new housing or a junior right holder. Destination $b$ is water deliberately banked or recharged. These destinations correspond to the four ``paracommoners'' of \citet{lankford2023}: proprietor, neighbour, nature, and society. Each destination depletes a fraction $d_i$ of the water it receives. The net change in basin depletion and the \emph{efficacy ratio} $\phi$ are
 \begin{equation}\label{eq:fate}
   \Dnet \;=\; -\Fwet \;+\; F \sum_i \lambda_i\, d_i ,
   \qquad
   \phi \;\equiv\; \frac{-\Dnet}{F} .
 \end{equation}
-$\phi$ is the share of the reported saving that becomes real water for the basin. It equals one only when the whole saving is wet and all of it is protected; it is near zero for return-flow-only practices; and it turns negative when rebound consumption exceeds the wet saving, which is the irrigation-efficiency paradox \citep{grafton2018}.
+$\phi$ is the share of the reported saving that becomes real water for the basin. It equals one only when the whole saving is wet and the program protects all of it. It is near zero for practices that remove only return flow. It turns negative when rebound consumption exceeds the wet saving, which is the irrigation-efficiency paradox \citep{grafton2018}.
 
-If re-applied and transferred water is drawn through the same diversion, only the protected share $\lambda_s F$ appears as a lasting drop in observed withdrawal. Under full rebound, $W$ does not change at all while depletion rises by $F d_u - \Fwet$. This is why reporting based on withdrawal can miss the paradox entirely.
+If re-applied and transferred water passes through the same diversion, only the protected share $\lambda_s F$ appears as a lasting drop in observed withdrawal. Under full rebound, $W$ does not change at all while depletion rises by $F d_u - \Fwet$. For this reason, reporting based on withdrawal can miss the paradox entirely.
 
-\paragraph{Where and when.} Basin totals hide third-party effects such as lost recharge, lower late-season baseflow, and shifts in timing. For a reach or node $k$ at time $t$,
+\paragraph{Where and when.} Third-party effects such as lost recharge, lower late-season baseflow, and shifts in timing do not appear in basin totals. For a reach or node $k$ at time $t$,
 \begin{equation}\label{eq:routing}
   \Delta Q_k(t) \;=\; \sum_{x} \lambda_s F_x(t)\,\ind[x \to k]
   \;-\; \sum_{j} \big(h_{jk} * F_{R,j}\big)(t)
   \;-\; \sum_{i\neq s} \lambda_i\, d_i\, F(t)\,\ind[i \to k] .
 \end{equation}
-The first term is protected water that passes node $k$; it is available early and starts at the diversion point $x$. The second is the lost return flow from each return location $j$, routed to $k$ through a transfer kernel $h_{jk}$ that represents lag and attenuation ($*$ denotes convolution). The third is new depletion by re-use upstream of $k$. Summed over a full year at a node below every return point, Equation~\eqref{eq:routing} reduces to $-\Dnet$. Between the diversion and the return points, and within the season, it does not. That gap is the timing and location problem: more water early near the diversion, less baseflow late and downstream.
+The first term is protected water that passes node $k$. This water starts at the diversion point $x$ and is available early. The second term is the lost return flow from each return location $j$. It reaches $k$ through a transfer kernel $h_{jk}$ that represents lag and attenuation ($*$ denotes convolution). The third term is new depletion by reuse upstream of $k$. Summed over a full year at a node below every return point, Equation~\eqref{eq:routing} reduces to $-\Dnet$. Between the diversion and the return points, and within the season, it does not. That gap is the timing and location problem: more water early near the diversion, less baseflow late and downstream.
 
-\paragraph{Co-effects.} Each flow can also carry an attribute vector such as heat, salinity, nutrients, or temperature. For example, the loss of evaporative cooling at a site scales with the local ET reduction, $L_v (F_{C_b} + F_{C_n})$, where $L_v$ is the latent heat of vaporization. Water quality effects follow $F_R$ and the loads it carried.
+\paragraph{Co-effects.} We can also attach to each flow an attribute vector such as heat, salinity, nutrients, or temperature. For example, the loss of evaporative cooling at a site scales with the local ET reduction, $L_v (F_{C_b} + F_{C_n})$, where $L_v$ is the latent heat of vaporization. Water quality effects follow $F_R$ and the loads in that return flow.
 
 % ===========================================================================
 \section{The parameters: flavors of consumptive and non-consumptive use}\label{sec:parameters}
 % ===========================================================================
 
-``Non-consumptive'' is not one category. Four properties of a return flow decide whether removing it matters, and to whom; a fifth set of parameters, the disposition shares, decides what the saving turns into. Each property has a slot in the equations above, so specifying a practice means filling in Table~\ref{tab:parameters}.
+``Non-consumptive'' is not one category. Whether removing a return flow matters, and to whom, depends on four properties of that flow. A fifth set of parameters, the disposition shares, determines what the saving becomes. Each property has a slot in the equations above, so specifying a practice means filling in Table~\ref{tab:parameters}.
 
 \begin{table}[htbp]
 \centering
@@ -146,24 +157,24 @@ The first term is protected water that passes node $k$; it is available early an
 \toprule
 Property & Slot in the equations & What it distinguishes & How to estimate it \\
 \midrule
-Benefit of consumption & $\Cb$ vs.\ $\Cn$ & Whether a cut in ET costs service (crop, lawn, shade) or only trims loss (soil evaporation, weeds) & Crop or landscape ET models; ET remote sensing \\
+Benefit of consumption & $\Cb$ vs.\ $\Cn$ & Whether a cut in ET costs service (crop, lawn, shade) or only trims loss (soil evaporation, weeds) & Crop and urban-vegetation ET models; ET remote sensing \\
 Recoverability & $R$ vs.\ $N$ & Whether the outflow reaches a usable river or aquifer, or a sink (saline, ocean, export, deep) & Hydrogeologic setting; effluent discharge point \\
 Location & Return point $j$ & Which reaches and wells receive the return, and who sits between diversion and return & Seepage maps; drain and outfall locations \\
-Timing & Kernel $h_{jk}$ & Lag and spread of a return: days for tailwater or effluent, months to years for canal seepage reaching springs & Groundwater--surface water models; tracer and baseflow studies \\
+Timing & Transfer kernel $h_{jk}$ & Lag and spread of a return: days for tailwater or effluent, months to years for canal seepage reaching springs & Groundwater--surface water models; tracer and baseflow studies \\
 Commitment & Committed vs.\ uncommitted outflow \citep{molden1997} & Whether downstream rights or environmental flows depend on the return; in a closed basin every unit of $R$ is spoken for & Water rights records; instream flow rules \\
-Quality & Attribute vector & Salinity, nutrients, and temperature carried by $R$; loss of dilution or cooling when $R$ falls & Water quality monitoring \\
+Quality & Attribute vector & Salinity, nutrient load, and temperature of $R$; loss of dilution or cooling when $R$ falls & Water quality monitoring \\
 Disposition & $\lambda_s,\lambda_u,\lambda_t,\lambda_b$ and $d_i$ & Whether freed water is protected, re-applied, transferred, or banked, and how consumptive the new use is & Program rules, trust water agreements, proration and growth plans \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Two consequences follow. First, \emph{the same hardware can belong to different types}. Lining a canal is a wet saving over a saline or unusable aquifer, because seepage there is $N$; over a connected alluvial aquifer, as in Walla Walla, it is a dry saving, because seepage there is $R$. Indoor fixtures in an inland city remove effluent that returns to the river; in a coastal city that discharges to the ocean, the same fixtures cut a non-recoverable outflow \citep[see][who notes that municipal and industrial use is mostly non-consumptive, with coastal cities the main exception]{perry2012}. Second, \emph{the common split between direct practices (hardware) and indirect ones (pricing, metering, education) is about parameter certainty, not physics}. Tiered rates, metering, and education act on $W$ through behavior and map onto the same terms through whichever end uses respond: rate signals mostly trim outdoor (consumptive) use, while metering and leak detection mostly trim returns. Indirect practices carry wider uncertainty and longer lags in $F$, but they do not need a separate equation.
+Two consequences follow. First, \emph{the same hardware can belong to different types}. Lining a canal over a saline or unusable aquifer is a wet saving, because seepage there is $N$. Lining a canal over a connected alluvial aquifer, as in Walla Walla, is a dry saving, because seepage there is $R$. Indoor fixtures in an inland city remove effluent that returns to the river. In a coastal city that discharges to the ocean, the same fixtures cut a non-recoverable outflow. \citet{perry2012} notes that municipal and industrial use is mostly non-consumptive, with coastal cities the main exception. Second, \emph{the common split between direct practices (hardware) and indirect ones (pricing, metering, education) is about parameter certainty, not physics}. Tiered rates, metering, and education act on $W$ through behavior. They map onto the same terms through whichever end uses respond: rate signals mostly trim outdoor (consumptive) use, while metering and leak detection mostly trim returns. For indirect practices, $F$ is more uncertain and takes longer to appear, but these practices do not need a separate equation.
 
 % ===========================================================================
 \section{Typology: four basic types and four dispositions}\label{sec:typology}
 % ===========================================================================
 
-The framework yields four basic types, defined by which term dominates $F$ in Equation~\eqref{eq:freed} (Table~\ref{tab:types}). Each type is then modified by a disposition, set by the $\lambda$ shares in Equation~\eqref{eq:fate}. The type tells you how much of the saving is real; the disposition tells you whether that real part survives.
+The framework yields four basic types, defined by which term dominates $F$ in Equation~\eqref{eq:freed} (Table~\ref{tab:types}). A disposition, set by the $\lambda$ shares in Equation~\eqref{eq:fate}, then modifies each type. The type determines how much of the saving is real; the disposition determines whether that real part survives.
 
 \begin{table}[htbp]
 \centering
@@ -173,17 +184,17 @@ The framework yields four basic types, defined by which term dominates $F$ in Eq
 \toprule
 Type & Signature & $\phi$ when protected ($\lambda_s = 1$) & Characteristic effect & Examples (and the setting that places them here) \\
 \midrule
-A. Depletion cut, service cut & $F$ mostly $F_{C_b}$ & Baseline depleted share $D/W$; below one because the retired use's returns also stop & Real basin water; lost production, landscape, shade, or ET cooling & Fallowing, deficit irrigation, crop switching, turf removal, outdoor watering limits \\
+A. Depletion cut, service cut & $F$ mostly $F_{C_b}$ & Baseline depleted share $D/W$; below one because the retired use's returns also stop & Real basin water; lost production, lawns and gardens, shade, or ET cooling & Fallowing, deficit irrigation, crop switching, turf removal, outdoor watering limits \\
 B. Depletion cut, service kept & $F$ mostly $F_{C_n} + F_N$ & Near one & Real basin water with no service loss; the only ``pure'' efficiency savings & Soil-evaporation control, phreatophyte control, evaporation suppression, lining over a saline or unusable aquifer, effluent reuse where effluent went to a sink \\
-C. Return-flow cut & $F$ mostly $F_R$ & Near zero & No net basin water; flow is redistributed: more between diversion and return point early in the season, less baseflow, recharge, and late-season supply downstream & Lining or piping over a connected aquifer, drip or sprinkler conversion where percolation was recoverable, main-line leak repair, inland indoor retrofits, inland effluent reuse \\
+C. Return-flow cut & $F$ mostly $F_R$ & Near zero & No net basin water; flow shifts: more between diversion and return point early in the season, less baseflow, recharge, and late-season supply downstream & Lining or piping over a connected aquifer, drip or sprinkler conversion where percolation was recoverable, main-line leak repair, inland indoor retrofits, inland effluent reuse \\
 D. Re-timing and relocation & $F \approx 0$, $\Delta D \approx 0$ (less storage evaporation); reshapes $h_{jk}$ & Not applicable & Moves water to when and where it is needed; the natural offset for Type C & MAR, aquifer storage and recovery, water banking, conjunctive use, reservoir reoperation \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The dispositions modify any type. Under \emph{protection} ($\lambda_s$), the wet part of $F$ becomes real water for the basin; for Types A and B this is the intended outcome. Under \emph{rebound} ($\lambda_u$), the proprietor re-applies $F$, usually with the new, more consumptive technology. Because $d_u$ is high, $\Dnet > 0$ whenever $F \lambda_u d_u > \Fwet$; for Type C, almost any rebound makes depletion rise \citep{ward2008}. Under \emph{transfer} ($\lambda_t$), the saving supports another use, such as growth or junior rights, and the result depends on $d_t$; a common example is municipal indoor savings that support new housing with outdoor use. Under \emph{banking} ($\lambda_b$), the saving is held in storage or an aquifer for later release, which makes the practice partly Type D.
+The dispositions modify any type. Under \emph{protection} ($\lambda_s$), the wet part of $F$ becomes real water for the basin; for Types A and B this is the intended outcome. Under \emph{rebound} ($\lambda_u$), the proprietor re-applies $F$, usually with the new, more consumptive technology. Because $d_u$ is high, $\Dnet > 0$ whenever $F \lambda_u d_u > \Fwet$; for Type C, almost any rebound makes depletion rise \citep{ward2008}. Under \emph{transfer} ($\lambda_t$), the saving supports another use, such as growth or junior rights, and the result depends on $d_t$. A common example is municipal indoor savings that support new housing with outdoor use. Under \emph{banking} ($\lambda_b$), the saving goes into storage or an aquifer for later release, which makes the practice partly Type D.
 
-Combining types and dispositions gives a short practice code, such as ``C$\cdot$rebound'' for district modernization with proration re-use, or ``A$\cdot$protected'' for split-season leasing into trust. A program could report this code next to its point-of-use figure. Figure~\ref{fig:classification} shows how to assign a code. The first question uses Equation~\eqref{eq:freed} to place a practice in a type; the second uses the $\lambda$ shares in Equation~\eqref{eq:fate} to assign its disposition. Type D practices skip the first split because they change timing, not volume.
+Combining types and dispositions gives a short practice code. Examples are ``C$\cdot$rebound'' for district modernization with proration reuse and ``A$\cdot$protected'' for split-season leasing into trust. A program could report this code next to its point-of-use figure. Figure~\ref{fig:classification} shows how to assign a code. The first question uses Equation~\eqref{eq:freed} to place a practice in a type; the second uses the $\lambda$ shares in Equation~\eqref{eq:fate} to assign its disposition. Type D practices skip the first split because they change timing, not volume.
 
 \begin{figure}[htbp]
 \centering
@@ -195,7 +206,7 @@ Combining types and dispositions gives a short practice code, such as ``C$\cdot$
 \section{Visualizing fate: Sankey diagrams and flow charts}\label{sec:visual}
 % ===========================================================================
 
-A two-ledger Sankey diagram draws Equations~\eqref{eq:freed} and~\eqref{eq:fate} directly (Figure~\ref{fig:sankey}). The left column shows what managers measure at the point of use; the right column shows what the basin receives; the links between them show each $F$ term moving from one fate to another. Across the panels, the fallowing case keeps most of the late-season return. The trust-protected modernization case adds 50 units to the early river but leaves only 6 to arrive late. The rebound case nearly doubles depletion while reporting the same 50-unit saving.
+A two-ledger Sankey diagram draws Equations~\eqref{eq:freed} and~\eqref{eq:fate} directly (Figure~\ref{fig:sankey}). The left column shows what managers measure at the point of use, and the right column shows what the basin receives. The links between them show each $F$ term moving from one fate to another. Across the panels, the fallowing case keeps most of the late-season return. The trust-protected modernization case adds 50 units to the early river but leaves only 6 to arrive late. The rebound case nearly doubles depletion while reporting the same 50-unit saving.
 
 \begin{figure}[htbp]
 \centering
@@ -203,15 +214,15 @@ A two-ledger Sankey diagram draws Equations~\eqref{eq:freed} and~\eqref{eq:fate}
 \caption{Two-ledger Sankey diagrams for an illustrative 100-unit diversion (Section~\ref{sec:examples}). Blue water stays in the basin (light: early in the river; dark: late, via the aquifer); grey is depleted. $\Delta$ is the change in depletion relative to the baseline.}\label{fig:sankey}
 \end{figure}
 
-The figures follow consistent conventions so that panels can be compared: every panel has the same total width; color marks the basin fate (stays versus depleted), not the practice, so colors stay consistent across practices; and one panel is drawn per practice code. Three companion charts cover what a Sankey cannot. A \emph{hydrograph difference plot} shows $\Delta Q_k(t)$ from Equation~\eqref{eq:routing} at two or three named nodes, by month, revealing early gains and late losses that net to $-\Delta D$. A \emph{network schematic} shows diversion points, return points, and receiving users or reaches, with arrows sized by $F_R$, revealing who sits between a diversion and its return. The \emph{classification flow} (Figure~\ref{fig:classification}) assigns the practice code.
+We draw every panel with the same conventions so that readers can compare panels. Every panel has the same total width. Color marks the basin fate (stays versus depleted), not the practice, so colors stay consistent across practices. Each practice code gets one panel. Three companion charts cover what a Sankey cannot. A \emph{hydrograph difference plot} shows $\Delta Q_k(t)$ from Equation~\eqref{eq:routing} at two or three named nodes, by month. It displays the early gains and late losses that net to $-\Dnet$. A \emph{network schematic} shows diversion points, return points, and receiving users or reaches, with arrows sized by $F_R$. It identifies who sits between a diversion and its return. The \emph{classification flow} (Figure~\ref{fig:classification}) assigns the practice code.
 
 % ===========================================================================
 \section{Worked illustrations}\label{sec:examples}
 % ===========================================================================
 
-In a stylized district, the conservation option with the largest reported saving delivers the least real water, and if the freed water is re-applied, the same option raises depletion by 39 units. All numbers are illustrative: they show the arithmetic and are not estimates for any real basin.
+In a stylized district, the conservation option with the largest reported saving delivers the least real water. If the district re-applies the freed water, the same option raises depletion by 39 units. All numbers are illustrative: they show the arithmetic and are not estimates for any real basin.
 
-\paragraph{Setup.} The district holds a 100-unit diversion. Its unlined canals and surface irrigation split this into crop ET (40), other ET (5), quick tailwater returns (10), and lagged returns (45: 20 from canal seepage and 25 from deep percolation, both reaching the river months later through the alluvial aquifer). Baseline depletion is therefore $D = 45$. Modernization (piped canals and sprinklers) serves the same acreage with 50 units: crop ET 40, other ET 2, quick returns 2, and lagged returns 6. Table~\ref{tab:scenarios} summarizes three scenarios.
+\paragraph{Setup.} The district holds a 100-unit diversion. Its unlined canals and surface irrigation split this diversion into crop ET (40), other ET (5), quick tailwater returns (10), and lagged returns (45). The lagged returns are 20 units of canal seepage and 25 of deep percolation, both reaching the river months later through the alluvial aquifer. Baseline depletion is therefore $D = 45$. Modernization (piped canals and sprinklers) serves the same acreage with 50 units: crop ET 40, other ET 2, quick returns 2, and lagged returns 6. Table~\ref{tab:scenarios} summarizes three scenarios.
 
 \begin{table}[htbp]
 \centering
@@ -229,30 +240,30 @@ Modernize, re-apply under proration & C$\cdot$rebound & 50 & 3 & 47 & $+39$ & $-
 \end{tabular}
 \end{table}
 
-Three points stand out. First, the largest reported saving yields the least real water: modernization reports 50 units but saves 3, while fallowing reports 20 but saves 9. Second, the rebound case is the irrigation-efficiency paradox in numbers: in the C$\cdot$rebound row, $d_u = 42/50$, so $\Dnet = -3 + 50 \times 0.84 = +39$. Third, Equation~\eqref{eq:routing} shows effects the basin totals miss. Modernization with trust protection puts 52 units in the river near the diversion early in the season, while lagged returns fall from 45 to 6; downstream baseflow and wells absorb that loss, as modeled for the Walla Walla Basin \citep{scherberg2018}.
+The scenarios support three points. First, the largest reported saving yields the least real water: modernization reports 50 units but saves 3, while fallowing reports 20 but saves 9. Second, the rebound case is the irrigation-efficiency paradox in numbers: in the C$\cdot$rebound row, $d_u = 42/50$, so $\Dnet = -3 + 50 \times 0.84 = +39$. Third, Equation~\eqref{eq:routing} identifies effects that basin totals omit. Modernization with trust protection puts 52 units in the river near the diversion early in the season, while lagged returns fall from 45 to 6. Downstream baseflow and wells absorb that loss, as \citet{scherberg2018} modeled for the Walla Walla Basin.
 
-\paragraph{Walla Walla.} In framework terms, canal piping was Type C. \citet{scherberg2018} modeled the basin and found that piping without MAR reduced groundwater storage, while piping combined with increased MAR allowed higher summer river flows with stable groundwater storage. In other words, a Type D practice (MAR) supplies a deliberate return flow, with chosen location and timing ($h_{jk}$), that replaces the lost $F_R$.
+\paragraph{Walla Walla.} In framework terms, canal piping in the Walla Walla Basin was Type C. \citet{scherberg2018} modeled the basin and found that piping without MAR reduced groundwater storage. Piping combined with increased MAR allowed higher summer river flows with stable groundwater storage. Here MAR, a Type D practice, supplies a deliberate return flow with chosen location and timing ($h_{jk}$), and that return flow replaces the lost $F_R$.
 
-\paragraph{Municipal.} Each municipal practice maps onto a different term. Indoor retrofits in an inland city are Type C: the effluent reaching the river shrinks by almost the full saving, and if the saving supports new connections (transfer), depletion rises by about $d_t F$, where $d_t$ includes the new homes' outdoor use. The same retrofits in a city that discharges to the ocean are Type B. Turf removal is Type A, and its co-effect follows the $F_{C_b}$ term: modeled summer daytime temperatures in Los Angeles rose by up to 1.9\,\textdegree C when lawns were replaced \citep{vahmani2016}, and a Phoenix field comparison found xeric plots about 3\,\textdegree C warmer on average than tree-and-turf plots \citep{saher2022}.
+\paragraph{Municipal.} Each municipal practice maps onto a different term. Indoor retrofits in an inland city are Type C: the effluent reaching the river shrinks by almost the full saving. If the saving supports new connections (transfer), depletion rises by about $d_t F$, where $d_t$ includes the outdoor use of the new homes. The same retrofits in a city that discharges to the ocean are Type B. Turf removal is Type A, and its co-effect follows the $F_{C_b}$ term. In model simulations for Los Angeles, \citet{vahmani2016} found that replacing lawns raised summer daytime temperatures by up to 1.9\,\textdegree C. In a Phoenix field comparison, \citet{saher2022} found xeric plots about 3\,\textdegree C warmer on average than tree-and-turf plots.
 
 % ===========================================================================
 \section{Next steps}\label{sec:next}
 % ===========================================================================
 
-The framework becomes useful once every practice in a basin carries its parameters and its practice code. Four steps would get there.
+The framework becomes useful once analysts assign each practice in a basin its parameters and practice code. Four steps would get there.
 \begin{enumerate}
-  \item \textbf{Parameter library.} Tabulate the fractions ($\Cb$, $\Cn$, $N$, $R$), return locations, and lag classes for each common Washington practice and hydrogeologic setting. Start from published practice inventories and program records, and use ranges rather than single values so the equations can propagate uncertainty (for example, Monte Carlo over the fractions to give a distribution for $\phi$).
-  \item \textbf{Disclosure template.} Ask each program, funding application, and SEPA document to report $F$, $\Fwet$, $\Fdry$, the $\lambda$ shares, and the expected sign of $\Delta Q$ at named downstream nodes in early and late season. This turns the call for full water accounting \citep{grafton2018} into a reporting standard.
-  \item \textbf{Basin pilot.} In Walla Walla or Yakima, estimate the transfer kernels $h_{jk}$ from existing groundwater--surface water models, use ET remote sensing to check $F_{C_b}$ and $F_{C_n}$, and compare the summed portfolio against observed depletion.
+  \item \textbf{Parameter library.} Tabulate the fractions ($\Cb$, $\Cn$, $N$, $R$), return locations, and lag classes for each common Washington practice and hydrogeologic setting. Start from published practice inventories and program records. Use ranges rather than single values so that the equations propagate uncertainty; for example, a Monte Carlo draw over the fractions gives a distribution for $\phi$.
+  \item \textbf{Disclosure template.} Ask each program, funding application, and SEPA document to report $F$, $\Fwet$, $\Fdry$, and the $\lambda$ shares. Each should also report the expected sign of $\Delta Q$ at named downstream nodes in early and late season. This template turns the call for full water accounting \citep{grafton2018} into a reporting standard.
+  \item \textbf{Basin pilot.} In Walla Walla or Yakima, estimate the transfer kernels $h_{jk}$ from existing groundwater--surface water models. Use ET remote sensing to check $F_{C_b}$ and $F_{C_n}$, and compare the summed portfolio against observed depletion.
   \item \textbf{Interactive tool.} Build a what-if Sankey in which managers set the practice, the setting, and $\lambda$, and see $\Dnet$, $\phi$, and seasonal $\Delta Q$ update together.
 \end{enumerate}
-One open question needs an early decision: where the accounting domain boundary should lie (district, sub-basin, or Water Resource Inventory Area). $F_N$ and the commitment status of $R$ both depend on where that line is drawn.
+One open question needs an early decision: where the accounting domain boundary should lie (district, sub-basin, or Water Resource Inventory Area). $F_N$ and the commitment status of $R$ both depend on that boundary.
 
 % ===========================================================================
 \section{Contribution to the literature}\label{sec:contribution}
 % ===========================================================================
 
-The building blocks of this framework are published. What has been missing is one quantitative object that joins them, works for any sector, includes timing and location, and yields a typology. Table~\ref{tab:contribution} compares the framework with the five most closely related bodies of work.
+Each building block of this framework already appears in published work, but no published work joins them. This framework joins them in one quantitative object that works for any sector, includes timing and location, and yields a typology. Table~\ref{tab:contribution} compares the framework with the five most closely related bodies of work.
 
 \begin{table}[htbp]
 \centering
@@ -264,9 +275,9 @@ Closest work & What it provides & What it leaves open & What this framework adds
 \midrule
 \citet{perry2007}; \citet{perry2009} & ICID terminology: consumed (beneficial, non-beneficial) and non-consumed (recoverable, non-recoverable) fractions, recommended at every scale & A partition of one state of a system; not the change caused by a practice, the fate of freed water, or the timing of returns & Equations \eqref{eq:change}--\eqref{eq:freed} recast the fractions as a change identity; Equations \eqref{eq:fate}--\eqref{eq:routing} add disposition and timing \\
 \citet{karimi2013}, Water Accounting Plus & Basin-scale accounting sheets (resource base, ET, productivity, withdrawal) from remote sensing and models & Describes the state of a basin; not designed to attribute a change to a practice or to compare practices & A practice-level ledger whose terms can feed WA+ sheets, plus a Sankey convention per practice \\
-\citet{lankford2020} & An ``irrigation efficiency matrix'' of five spatial scales by ten dimensions & Conceptual and qualitative; irrigation only & Scale enters quantitatively through the accounting boundary and the routing kernel; extends to municipal and industrial use \\
-\citet{lankford2023} & A spreadsheet model that reallocates irrigation savings among proprietor, neighbour, nature, and society; closest in spirit & Steady-state comparison of baseline and future scenarios, without seasonality, lags, or reach-by-reach routing; irrigation-based, with society and nature as lumped residuals & Equation \eqref{eq:routing} for location and timing, sector generality, an explicit depletion fraction for each re-use, the typology, and co-effects \\
-\citet{grafton2018}; \citet{contor2013} & Empirical and economic demonstration of the efficiency paradox, with a call for accounting, consumption caps, and risk assessment & A diagnosis of the rebound mechanism, but no general accounting form across practices & Rebound becomes one term ($\lambda_u d_u F$) and the paradox a testable sign condition: depletion rises when $F\sum_i \lambda_i d_i > \Fwet$ \\
+\citet{lankford2020} & An ``irrigation efficiency matrix'' of five spatial scales by ten dimensions & Conceptual and qualitative; irrigation only & Scale enters quantitatively through the accounting boundary and the transfer kernel; extends to municipal and industrial use \\
+\citet{lankford2023} & A spreadsheet model that reallocates irrigation savings among proprietor, neighbour, nature, and society; closest in spirit & Steady-state comparison of baseline and future scenarios, without seasonality, lags, or reach-by-reach routing; irrigation-based, with society and nature as lumped residuals & Equation \eqref{eq:routing} for location and timing, sector generality, an explicit depletion fraction for each reuse, the typology, and co-effects \\
+\citet{grafton2018}; \citet{contor2013} & Empirical and economic demonstration of the irrigation-efficiency paradox, with a call for accounting, consumption caps, and risk assessment & A diagnosis of the rebound mechanism, but no general accounting form across practices & Rebound becomes one term ($\lambda_u d_u F$) and the paradox a testable sign condition: depletion rises when $F\sum_i \lambda_i d_i > \Fwet$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -274,10 +285,10 @@ Closest work & What it provides & What it leaves open & What this framework adds
 A manuscript built on this framework would make five contributions:
 \begin{enumerate}
   \item \textbf{A general identity for conservation outcomes} that holds for all five levers and all sectors, with the familiar irrigation results as special cases.
-  \item \textbf{A typology defined by parameter signatures rather than technologies}, which explains why the same hardware is a wet saving in one setting and a dry saving in another.
+  \item \textbf{A typology defined by parameter signatures rather than technologies}. The typology explains why the same hardware is a wet saving in one setting and a dry saving in another.
   \item \textbf{A sign condition for rebound} against which empirical studies such as \citet{pfeiffer2014} could report results in a common form.
   \item \textbf{An explicit link to third-party effects in time and space}, matching legal tests such as Washington's ``net water savings'' without impairment of existing rights.
-  \item \textbf{A reporting and visualization standard}: the practice code, $F$, $\Fwet$, $\Fdry$, $\Dnet$, $\phi$, and the two-ledger Sankey, for disclosure in funding applications and environmental review.
+  \item \textbf{A reporting and visualization standard} for disclosure in funding applications and environmental review. The standard comprises the practice code, $F$, $\Fwet$, $\Fdry$, $\Dnet$, $\phi$, and the two-ledger Sankey.
 \end{enumerate}
 
 \bibliographystyle{plainnat}
