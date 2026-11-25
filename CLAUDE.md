@@ -21,24 +21,24 @@ Jon Yoder (Washington State University). A conceptual framework paper on what ha
 
 Jon's Overleaf project is the copy he and co-authors edit by hand. Keep it in step with this repo over Overleaf's git bridge.
 
-- Remote: `https://git.overleaf.com/<PROJECT_ID>` (the ID is the last part of the Overleaf project URL; ask Jon if it isn't set yet). Overleaf's branch is `master`.
-- Auth: the cloud environment has a network secret for `git.overleaf.com` (username `git`, Overleaf git token as password), attached by the agent proxy. Never ask Jon to paste the token into chat. If git reports an auth failure, the secret is missing or uses the wrong secret type; tell Jon rather than working around it.
-
-First connection (Overleaf project created blank, so it has an unrelated starter commit):
+- Remote: `https://git.overleaf.com/6b073d3b2eeea9deb5f6f6ef`. Overleaf's branch is `main` (not `master`).
+- Auth: the cloud environment has a network secret for `git.overleaf.com` (type Basic, username `git`, Overleaf git token `olp_…` as password), attached by the agent proxy. Never ask Jon to paste the token into chat.
+- Git won't send a request until it has credentials, so give it placeholders that the proxy overwrites. Each new container needs this once (it lives in the local git config, not the repo):
 
 ```bash
-git remote add overleaf https://git.overleaf.com/<PROJECT_ID>
-git fetch overleaf
-git merge overleaf/master --allow-unrelated-histories -X ours -m "Merge Overleaf starter project"
-# keep this repo's main.tex; delete any Overleaf starter files we don't use, then commit
-git push overleaf HEAD:master
+git remote add overleaf https://git.overleaf.com/6b073d3b2eeea9deb5f6f6ef   # if missing
+git config credential.https://git.overleaf.com.helper '!f() { echo username=git; echo password=proxy-injected; }; f'
 ```
+
+- If git still reports `Authentication failed`, the secret is wrong: missing, wrong type, username not `git`, or a bad token. Tell Jon rather than working around it.
+
+First connection was done 2026-11-25 (Overleaf starter commit merged with `-X ours`; this repo's files kept).
 
 Every session after that:
 
-1. `git fetch overleaf && git merge overleaf/master` first — Jon may have edited in Overleaf. Resolve conflicts in his favor unless he says otherwise.
+1. `git fetch overleaf && git merge overleaf/main` first — Jon may have edited in Overleaf. Resolve conflicts in his favor unless he says otherwise.
 2. Make the requested changes; compile to check (`latexmk -pdf main.tex`) if TeX is installed in the environment, otherwise rely on Overleaf's compile and say so.
-3. Commit, then `git push overleaf HEAD:master` and push the session branch to GitHub.
+3. Commit, then `git push overleaf HEAD:main` and push the session branch to GitHub.
 4. Tell Jon what changed in plain terms; he reads the result in Overleaf.
 
 Don't force-push to Overleaf.
