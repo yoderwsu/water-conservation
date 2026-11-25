@@ -38,7 +38,7 @@ Every session after that:
 
 1. `git fetch overleaf && git merge overleaf/main` first — Jon may have edited in Overleaf. Resolve conflicts in his favor unless he says otherwise.
 2. Make the requested changes; compile to check (`latexmk -pdf main.tex`) if TeX is installed in the environment, otherwise rely on Overleaf's compile and say so.
-3. Commit, then `git push overleaf HEAD:main` and push the session branch to GitHub.
+3. Commit, then `git push overleaf HEAD:main`, push the session branch to GitHub, and also update GitHub's `main` with `git push origin HEAD:main` (Jon approved this so GitHub `main` stays a current copy of the Overleaf version). If that push is rejected because GitHub `main` has commits this session lacks, fetch and merge `origin/main`, then push again; never force-push.
 4. Tell Jon what changed in plain terms; he reads the result in Overleaf.
 
 Don't force-push to Overleaf.
