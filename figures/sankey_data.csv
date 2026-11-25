@@ -1,0 +1,21 @@
+scenario,label,part,part_label,basin,value
+base,"Baseline: unlined canals, surface irrigation",left,Left in river,early,0
+base,"Baseline: unlined canals, surface irrigation",quick,Tailwater (quick return),early,10
+base,"Baseline: unlined canals, surface irrigation",seep,Seepage + percolation,late,45
+base,"Baseline: unlined canals, surface irrigation",oet,Other ET,dep,5
+base,"Baseline: unlined canals, surface irrigation",crop,Crop ET,dep,40
+a,"A·protected: fallow 20%, water into trust",left,Left in river,early,20
+a,"A·protected: fallow 20%, water into trust",quick,Tailwater (quick return),early,8
+a,"A·protected: fallow 20%, water into trust",seep,Seepage + percolation,late,36
+a,"A·protected: fallow 20%, water into trust",oet,Other ET,dep,4
+a,"A·protected: fallow 20%, water into trust",crop,Crop ET,dep,32
+cp,"C·protected: modernize, saving into trust",left,Left in river,early,50
+cp,"C·protected: modernize, saving into trust",quick,Tailwater (quick return),early,2
+cp,"C·protected: modernize, saving into trust",seep,Seepage + percolation,late,6
+cp,"C·protected: modernize, saving into trust",oet,Other ET,dep,2
+cp,"C·protected: modernize, saving into trust",crop,Crop ET,dep,40
+cr,"C·rebound: modernize, saving re-applied",left,Left in river,early,0
+cr,"C·rebound: modernize, saving re-applied",quick,Tailwater (quick return),early,4
+cr,"C·rebound: modernize, saving re-applied",seep,Seepage + percolation,late,12
+cr,"C·rebound: modernize, saving re-applied",oet,Other ET,dep,4
+cr,"C·rebound: modernize, saving re-applied",crop,Crop ET,dep,80

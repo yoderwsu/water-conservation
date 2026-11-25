@@ -1,0 +1,61 @@
+% Classification flow (Figure: fig:classification). Included from main.tex with \input.
+\begin{tikzpicture}[
+  font=\footnotesize,
+  box/.style={draw=black!55, rounded corners=3pt, align=center, minimum height=8mm, inner sep=4pt},
+  q/.style={box, text width=6.4cm},
+  ty/.style={box, text width=2.85cm, minimum height=15mm},
+  disp/.style={box, text width=2.85cm, minimum height=10mm},
+  res/.style={box, draw=blue!60!black, fill=blue!8, line width=0.9pt, text width=6.4cm},
+  arr/.style={-{Stealth[length=2mm]}, draw=black!55},
+  lab/.style={font=\scriptsize, text=black!65}
+]
+% Column x-positions for the four types/dispositions
+\def\xa{0}\def\xb{3.35}\def\xc{6.7}\def\xd{10.05}
+
+\node[q] (q1) at (5.025,0) {Does the practice reduce withdrawal ($F>0$)?};
+\node[q, text width=5.2cm] (q2) at (\xb,-1.6) {Which term dominates $F$? (Equation~\ref{eq:freed})};
+
+\node[ty] (A) at (\xa,-3.6) {\textbf{Type A}\\Depletion cut,\\service cut\\{\scriptsize\color{black!65} fallowing, xeriscape}};
+\node[ty] (B) at (\xb,-3.6) {\textbf{Type B}\\Depletion cut,\\service kept\\{\scriptsize\color{black!65} evaporation control}};
+\node[ty] (C) at (\xc,-3.6) {\textbf{Type C}\\Return-flow cut\\(dry saving)\\{\scriptsize\color{black!65} lining over alluvium}};
+\node[ty] (D) at (\xd,-3.6) {\textbf{Type D}\\Re-timing and\\relocation\\{\scriptsize\color{black!65} MAR, banking, ASR}};
+
+\node[q] (q3) at (5.025,-5.7) {Where does $F$ go? (Equation~\ref{eq:fate}, $\lambda$ shares)};
+
+\node[disp] (S) at (\xa,-7.3) {\textbf{Protected} ($\lambda_s$)\\{\scriptsize\color{black!65} real saving survives}};
+\node[disp] (U) at (\xb,-7.3) {\textbf{Rebound} ($\lambda_u$)\\{\scriptsize\color{black!65} proprietor re-applies}};
+\node[disp] (T) at (\xc,-7.3) {\textbf{Transfer} ($\lambda_t$)\\{\scriptsize\color{black!65} growth or another user}};
+\node[disp] (Bk) at (\xd,-7.3) {\textbf{Banked} ($\lambda_b$)\\{\scriptsize\color{black!65} stored for later release}};
+
+\node[res] (R) at (5.025,-9.1) {\textbf{Practice code}, e.g.\ C$\cdot$rebound\\reported with $F$, $F_{\mathrm{wet}}$, $F_{\mathrm{dry}}$, $\Delta D_{\mathrm{net}}$, and $\phi$};
+
+% q1 -> q2 (yes) and q1 -> D (no)
+\draw[arr] (q1.south -| q2.north) -- node[right, lab]{yes} (q2.north);
+\draw[arr] (q1.east) -| node[pos=0.75, right, lab]{no} (D.north);
+
+% q2 -> A, B, C via a bus
+\coordinate (bus1) at ($(q2.south)+(0,-0.35)$);
+\draw[draw=black!55] (q2.south) -- (bus1);
+\draw[draw=black!55] (bus1 -| A.north) -- (bus1 -| C.north);
+\draw[arr] (bus1 -| A.north) -- node[right, lab]{$F_{C_b}$} (A.north);
+\draw[arr] (bus1 -| B.north) -- node[right, lab]{$F_{C_n}+F_N$} (B.north);
+\draw[arr] (bus1 -| C.north) -- node[right, lab]{$F_R$} (C.north);
+
+% types -> q3
+\coordinate (bus2) at ($(A.south)+(0,-0.3)$);
+\foreach \n in {A,B,C,D} {\draw[draw=black!55] (\n.south) -- (\n.south |- bus2);}
+\draw[draw=black!55] (bus2 -| A.south) -- (bus2 -| D.south);
+\draw[arr] (bus2 -| q3.north) -- (q3.north);
+
+% q3 -> dispositions
+\coordinate (bus3) at ($(q3.south)+(0,-0.3)$);
+\draw[draw=black!55] (q3.south) -- (bus3);
+\draw[draw=black!55] (bus3 -| S.north) -- (bus3 -| Bk.north);
+\foreach \n in {S,U,T,Bk} {\draw[arr] (bus3 -| \n.north) -- (\n.north);}
+
+% dispositions -> result
+\coordinate (bus4) at ($(S.south)+(0,-0.3)$);
+\foreach \n in {S,U,T,Bk} {\draw[draw=black!55] (\n.south) -- (\n.south |- bus4);}
+\draw[draw=black!55] (bus4 -| S.south) -- (bus4 -| Bk.south);
+\draw[arr] (bus4 -| R.north) -- (R.north);
+\end{tikzpicture}
