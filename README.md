@@ -58,9 +58,9 @@ The preamble of `main.tex` defines macros for this notation (`\Cb`, `\Cn`, `\Fwe
 
 ## Worked example
 
-Section 7 uses an illustrative 100-unit irrigation diversion; the numbers are not estimates. Table 4, the Sankey CSV, and the prose in Sections 6 and 7 share these numbers. If one changes, update all three.
+Section 7 uses an illustrative 100-unit irrigation diversion; the numbers are not estimates. The scenario table (`tab:scenarios`), the Sankey CSV, and the prose in Sections 6 and 7 share these numbers. If one changes, update all three.
 
 ## Related repositories
 
-- [`yoderwsu/water-conservation-tool`](https://github.com/yoderwsu/water-conservation-tool): the Conserved Water Ledger, an interactive what-if tool built on the paper's equations. Its tests reproduce Table 4, so a change to the paper's model or numbers needs a matching change there.
+- [`yoderwsu/water-conservation-tool`](https://github.com/yoderwsu/water-conservation-tool): the Conserved Water Ledger, an interactive what-if tool built on the paper's equations. Its tests reproduce the scenario table (`tab:scenarios`), so a change to the paper's model or numbers needs a matching change there.
 - [`yoderwsu/writing-standards`](https://github.com/yoderwsu/writing-standards): the writing standard and style checker used for the manuscript's prose.
