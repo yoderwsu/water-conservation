@@ -6,6 +6,7 @@ Jon Yoder (Washington State University). A conceptual framework paper on what ha
 
 - `main.tex` — the manuscript. Single file, `article` class, natbib author-year (`\citep`, `\citet`).
 - `refs.bib` — bibliography. Entry `wadraft2026` is a placeholder for an unpublished 2026 Washington conservation report; replace it once Jon supplies authors and agency (see its TODO note).
+- `practitioner.tex` — plain-language companion (placeholder; sections are outlined with visible `\todo{}` notes). No equations or symbols in its running text: it uses the words in its glossary table, each mapped to one symbol in main.tex. Same worked-example numbers as main.tex Section 7. Shares `refs.bib` and `figures/`; compile from the root with `latexmk -pdf practitioner.tex`. When main.tex notation, typology, or example numbers change, update this file to match. Target venues (The Water Report, JCWRE) have not been checked for format yet; ucowr.org was not reachable from the cloud environment.
 - `figures/classification.tex` — TikZ classification flowchart, `\input` by main.tex.
 - `figures/make_sankey.py` + `figures/sankey_data.csv` → `figures/sankey.pdf`. Edit the CSV and rerun `python figures/make_sankey.py`; commit the regenerated PDF (Overleaf can't run Python).
 

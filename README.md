@@ -13,6 +13,7 @@ The Overleaf project is the copy that Jon and co-authors edit by hand. This repo
 | Path | Contents |
 | --- | --- |
 | `main.tex` | The manuscript: one file, `article` class, natbib author-year citations. |
+| `practitioner.tex` | Placeholder for a plain-language companion: the same framework in words, with no equations, for water managers and program staff. Candidate venues: *The Water Report* and the *Journal of Contemporary Water Research & Education*. Shares `refs.bib` and `figures/`. |
 | `refs.bib` | Bibliography. `wadraft2026` is a placeholder for an unpublished 2026 Washington conservation report. |
 | `figures/classification.tex` | TikZ flowchart that assigns a practice code (Figure 1). |
 | `figures/sankey_data.csv` | Flow values for the Sankey panels. |
@@ -22,10 +23,14 @@ The Overleaf project is the copy that Jon and co-authors edit by hand. This repo
 
 ## Build
 
-Overleaf compiles the paper directly. To compile locally with TeX Live:
+Overleaf compiles one main document at a time; choose `main.tex` or `practitioner.tex` under Menu → Main document. To compile locally with TeX Live, run from the project root:
 
 ```bash
 latexmk -pdf main.tex
+```
+
+```bash
+latexmk -pdf practitioner.tex
 ```
 
 To redraw the Sankey figure after editing `figures/sankey_data.csv` (needs Python with matplotlib):
