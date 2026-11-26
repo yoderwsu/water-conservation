@@ -118,13 +118,14 @@ This identity holds for every lever, including those that leave $W$ unchanged, a
 
 \paragraph{Freed water.} For levers 1 and 2, we separate the technical effect of a practice from what is then done with the water. To do so, we add an intermediate state $\tau$. In state $\tau$ the practice is in place and delivers the original activity (lever~2) or the reduced activity (lever~1), but none of the water it frees has yet been put to use. State $\tau$ is a counterfactual, so it need not be observed. Write $\dtau X \equiv X^{\tau} - X^{0}$ for the change in component $X$ from state 0 to state $\tau$. The \emph{freed withdrawal} $F$ and its two parts are then
 \begin{equation}\label{eq:freed}
-  F \;\equiv\; -\dtau W ,
-  \qquad
-  \Fwet \;\equiv\; -\dtau D \;=\; -\big(\dtau \Cb + \dtau \Cn + \dtau N\big) ,
-  \qquad
-  \Fdry \;\equiv\; -\dtau R .
+\begin{aligned}
+  F     &\equiv -\dtau W , \\
+  \Fwet &\equiv -\dtau D = -\big(\dtau \Cb + \dtau \Cn + \dtau N\big) , \\
+  \Fdry &\equiv -\dtau R , \\
+  F     &= \Fwet + \Fdry .
+\end{aligned}
 \end{equation}
-Equation~\eqref{eq:change}, applied to the step from state 0 to state $\tau$, gives $F = \Fwet + \Fdry$. $F$ is the number programs usually report. Every unit of $F$ either reduces depletion (a ``wet'' saving) or removes water that was already coming back (a ``dry'' saving), in the terms of \citet{seckler1996}. A cut in beneficial consumption ($\dtau \Cb < 0$) also means lost service, such as fewer irrigated acres or less lawn.
+The last line follows from Equation~\eqref{eq:change} applied to the step from state 0 to state $\tau$. $F$ is the number programs usually report. Every unit of $F$ either reduces depletion (a ``wet'' saving) or removes water that was already coming back (a ``dry'' saving), in the terms of \citet{seckler1996}. A cut in beneficial consumption ($\dtau \Cb < 0$) also means lost service, such as fewer irrigated acres or less lawn.
 
 \paragraph{Conservation fate equation.} The freed water $F$ does not disappear. In the step from state $\tau$ to state 1, it goes to four destinations $i$, in shares $\lambda_i$ that sum to one. Destination $s$ is water left in the source and legally protected, for example as a trust water right. Destination $u$ is water the proprietor re-applies to more acres, a fuller supply under proration, or new crops. Destination $t$ is water transferred to another user, such as new housing or a junior right holder. Destination $b$ is water deliberately banked or recharged. These destinations correspond to the four ``paracommoners'' of \citet{lankford2023}: proprietor, neighbour, nature, and society. Each destination depletes a fraction $d_i$ of the water it receives, so this step adds $F \sum_i \lambda_i d_i$ to depletion. The change in basin depletion over the whole move from state 0 to state 1, and the \emph{efficacy ratio} $\phi$, are therefore
 \begin{equation}\label{eq:fate}
