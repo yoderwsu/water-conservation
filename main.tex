@@ -85,18 +85,18 @@ A conservation practice can change the fate of water through five levers (Table~
 \footnotesize
 \begin{tabularx}{\textwidth}{@{}P{1.6cm}LLP{2.6cm}L@{}}
 \toprule
-Lever & What the practice changes & Terms it moves & Effect on observed withdrawal & Examples \\
+Lever & What the practice changes & What changes in the water balance & Effect on observed withdrawal & Examples \\
 \midrule
-1. Scale & How much of an activity takes place; the split of each unit among fates stays the same & All four components shrink in proportion & Falls & Fallowing, turf removal, shorter showers, outdoor watering limits \\
-2. Partition & How each unit divides among consumption, non-recoverable loss, and return, for the same service & The split among $\Cb$, $\Cn$, $N$, and $R$; required $W$ usually falls & Falls, unless the freed water is reused & Canal lining, drip or sprinkler conversion, mulch, low-flow fixtures, leak repair \\
-3. Disposition & What happens to water freed by levers 1 and 2 & $\lambda$ shares and the depletion fraction $d$ of the new use & Unchanged under rebound or transfer; falls only when protected & Trust water, reuse under proration, new connections, banking \\
-4. Routing & Where and when diversions and returns occur, volumes roughly unchanged & Return location $j$ and transfer kernel $h_{jk}$ & Roughly unchanged & MAR, aquifer storage and recovery, diversion timing, moving an outfall \\
-5. Source and quality & Which source supplies $W$, and whether returns stay usable & Which node the change in $W$ applies to; $R$ reclassified as $N$ or $N$ as $R$ & Shifts between sources & Reclaimed water, surface--groundwater substitution, treating or salinizing return flows \\
+1. Scale & How much of an activity takes place; the split of each unit among fates stays the same & Consumption, losses, and return flow all shrink in proportion & Falls & Fallowing, turf removal, shorter showers, outdoor watering limits \\
+2. Partition & How each unit divides among consumption, non-recoverable loss, and return, for the same service & The shares of consumption, losses, and return flow; the withdrawal needed usually falls & Falls, unless the freed water is reused & Canal lining, drip or sprinkler conversion, mulch, low-flow fixtures, leak repair \\
+3. Disposition & What happens to water freed by levers 1 and 2 & Where the freed water goes, and how much of it the new use consumes & Unchanged under rebound or transfer; falls only when protected & Trust water, reuse under proration, new connections, banking \\
+4. Routing & Where and when diversions and returns occur, volumes roughly unchanged & Where return flows re-enter the river, and how long they take & Roughly unchanged & MAR, aquifer storage and recovery, diversion timing, moving an outfall \\
+5. Source and quality & Which source supplies the withdrawal, and whether returns stay usable & Which source the change in withdrawal draws on; whether a return counts as usable or lost & Shifts between sources & Reclaimed water, surface--groundwater substitution, treating or salinizing return flows \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Two consequences shape the equations that follow. First, \emph{observed withdrawal is an unreliable indicator}. $W$ can fall with no change in depletion, when lever~2 removes only $R$. $W$ can also stay flat while depletion rises, when rebound under lever~3 follows lever~2. The equations therefore track the change in every component, not $W$ alone. Second, \emph{some practices act on water that is never withdrawn}. Rainwater harvesting, cover crops, and land-cover change alter evapotranspiration (ET) of precipitation. The framework handles them by replacing $W$ with total input $W + P$ throughout, where $P$ is effective precipitation. This substitution matches the distinction in basin water accounting between ET supplied by precipitation and incremental ET supplied by withdrawals \citep{karimi2013}.
+Two consequences shape the equations that follow. First, \emph{observed withdrawal is an unreliable indicator}. Withdrawal can fall with no change in depletion, when lever~2 removes only return flow. Withdrawal can also stay flat while depletion rises, when rebound under lever~3 follows lever~2. The equations therefore track the change in every part of the water balance, not withdrawal alone. Second, \emph{some practices act on water that is never withdrawn}. Rainwater harvesting, cover crops, and land-cover change alter evapotranspiration (ET) of precipitation. The framework handles them by replacing withdrawal with total water input, withdrawal plus effective precipitation, throughout. This substitution matches the distinction in basin water accounting between ET supplied by precipitation and incremental ET supplied by withdrawals \citep{karimi2013}.
 
 % ===========================================================================
 \section{The foundational identity}\label{sec:identity}
@@ -112,7 +112,7 @@ $R$ is recoverable return flow: seepage, deep percolation, tailwater, leaks, or 
 \[
   D \equiv \Cb + \Cn + N ,
 \]
-where $\Cb$ is beneficial consumption, $\Cn$ is non-beneficial consumption, and $N$ is non-recoverable outflow. Beneficial consumption is ET or incorporation that delivers the intended service, such as ET from crops or lawns. Non-beneficial consumption includes soil and canal evaporation and ET from weeds and phreatophytes. Non-recoverable outflow is water that leaves usable reach, such as flow to a saline sink, the ocean, an out-of-basin export, or an aquifer too deep to pump.
+where $\Cb$ is beneficial consumption, $\Cn$ is non-beneficial consumption, and $N$ is non-recoverable outflow. For practices that act on precipitation (Section~\ref{sec:levers}), $W$ is replaced by $W + P$, where $P$ is effective precipitation. Beneficial consumption is ET or incorporation that delivers the intended service, such as ET from crops or lawns. Non-beneficial consumption includes soil and canal evaporation and ET from weeds and phreatophytes. Non-recoverable outflow is water that leaves usable reach, such as flow to a saline sink, the ocean, an out-of-basin export, or an aquifer too deep to pump.
 
 \paragraph{Change identity.} A practice moves a use from state 0 (before) to state 1 (after). With $\Delta$ denoting state 1 minus state 0, the balance must still close:
 \begin{equation}\label{eq:change}
@@ -120,7 +120,7 @@ where $\Cb$ is beneficial consumption, $\Cn$ is non-beneficial consumption, and 
   \qquad
   \Delta D = \Delta \Cb + \Delta \Cn + \Delta N .
 \end{equation}
-This identity holds for every lever, including those that leave $W$ unchanged, and for the change between any two states of a use. Point-of-use reporting sees $-\Delta W$; the basin sees $\Delta D$; the gap between the two is the change in return flow, $\Delta R$. Lever~4 (routing) leaves all four terms nearly unchanged and acts only through Equation~\eqref{eq:routing}. Lever~5 (source) applies Equation~\eqref{eq:change} separately to each source.
+This identity holds for every lever, including those that leave $W$ unchanged, and for the change between any two states of a use. Point-of-use reporting sees $-\Delta W$; the basin sees $\Delta D$; the gap between the two is the change in return flow, $\Delta R$. In this notation, the levers of Table~\ref{tab:levers} act as follows. Lever~1 (scale) shrinks $W$, $\Cb$, $\Cn$, $N$, and $R$ in proportion. Lever~2 (partition) changes the split among $\Cb$, $\Cn$, $N$, and $R$ and usually lowers $W$. Lever~3 (disposition) acts through the destinations of the freed water in Equation~\eqref{eq:fate} below. Lever~4 (routing) leaves all four terms nearly unchanged and acts only through where and when return flows arrive, in Equation~\eqref{eq:routing} below. Lever~5 (source) applies Equation~\eqref{eq:change} separately to each source, and a change in water quality can reclassify $R$ as $N$ or $N$ as $R$.
 
 \paragraph{Freed water.} For levers 1 and 2, we separate the technical effect of a practice from what is then done with the water. To do so, we add an intermediate state $\tau$. In state $\tau$ the practice is in place and delivers the original activity (lever~2) or the reduced activity (lever~1), but none of the water it frees has yet been put to use. State $\tau$ is a counterfactual, so it need not be observed. Write $\dtau X \equiv X^{\tau} - X^{0}$ for the change in component $X$ from state 0 to state $\tau$. The \emph{freed withdrawal} $F$ and its two parts are then
 \begin{equation}\label{eq:freed}
