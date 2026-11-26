@@ -12,8 +12,8 @@
 % Column x-positions for the four types/dispositions
 \def\xa{0}\def\xb{3.35}\def\xc{6.7}\def\xd{10.05}
 
-\node[q] (q1) at (5.025,0) {Does the practice reduce withdrawal ($F>0$)?};
-\node[q, text width=5.2cm] (q2) at (\xb,-1.6) {Which term dominates $F$? (Equation~\eqref{eq:freed})};
+\node[q] (q1) at (5.025,0) {Does it reduce withdrawal \mbox{($F>0$)}?};
+\node[q, text width=6.4cm] (q2) at (\xb,-1.45) {Cuts beneficial consumption? If not, is $F$\\mostly wet or dry? (Equation~\eqref{eq:freed})};
 
 \node[ty] (A) at (\xa,-3.6) {\textbf{Type A}\\Depletion cut,\\service cut\\{\scriptsize\color{black!65} fallowing, xeriscape}};
 \node[ty] (B) at (\xb,-3.6) {\textbf{Type B}\\Depletion cut,\\service kept\\{\scriptsize\color{black!65} evaporation control}};
@@ -27,7 +27,7 @@
 \node[disp] (T) at (\xc,-7.3) {\textbf{Transfer} ($\lambda_t$)\\{\scriptsize\color{black!65} growth or another user}};
 \node[disp] (Bk) at (\xd,-7.3) {\textbf{Banked} ($\lambda_b$)\\{\scriptsize\color{black!65} stored for later release}};
 
-\node[res] (R) at (5.025,-9.1) {\textbf{Practice code}, e.g.\ C$\cdot$rebound\\reported with $F$, $F_{\mathrm{wet}}$, $F_{\mathrm{dry}}$, $\Delta D_{\mathrm{net}}$, and $\phi$};
+\node[res] (R) at (5.025,-9.1) {\textbf{Practice code}, e.g.\ C$\cdot$rebound\\reported with $F$, $F_{\mathrm{wet}}$, $F_{\mathrm{dry}}$, $\Delta D$, and $\phi$};
 
 % q1 -> q2 (yes) and q1 -> D (no)
 \draw[arr] (q1.south -| q2.north) -- node[right, lab]{yes} (q2.north);
@@ -37,9 +37,9 @@
 \coordinate (bus1) at ($(q2.south)+(0,-0.35)$);
 \draw[draw=black!55] (q2.south) -- (bus1);
 \draw[draw=black!55] (bus1 -| A.north) -- (bus1 -| C.north);
-\draw[arr] (bus1 -| A.north) -- node[right, lab]{$F_{C_b}$} (A.north);
-\draw[arr] (bus1 -| B.north) -- node[right, lab]{$F_{C_n}+F_N$} (B.north);
-\draw[arr] (bus1 -| C.north) -- node[right, lab]{$F_R$} (C.north);
+\draw[arr] (bus1 -| A.north) -- node[right, lab]{$\Delta^{\tau} C_b<0$} (A.north);
+\draw[arr] (bus1 -| B.north) -- node[right, lab]{no; wet} (B.north);
+\draw[arr] (bus1 -| C.north) -- node[right, lab]{no; dry} (C.north);
 
 % types -> q3
 \coordinate (bus2) at ($(A.south)+(0,-0.3)$);

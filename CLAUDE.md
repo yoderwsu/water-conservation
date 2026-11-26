@@ -12,9 +12,12 @@ Jon Yoder (Washington State University). A conceptual framework paper on what ha
 ## Conventions
 
 - Equations are numbered automatically. Labels: `eq:partition` (1), `eq:change` (2), `eq:freed` (3), `eq:fate` (4), `eq:routing` (5). Always refer with `Equation~\eqref{...}`; never type an equation number.
-- Notation macros are defined in the preamble (`\Cb`, `\Cn`, `\Fwet`, `\Fdry`, `\Dnet`, `\ind`). Use them so notation stays consistent.
-- The worked-example numbers (100-unit diversion, Table `tab:scenarios`, Figure `fig:sankey`) are illustrative, not estimates. If one number changes, recheck the table, the Sankey CSV, and the prose in sections 6–7 together: F = F_wet + F_dry, ΔD_net = −F_wet + F·Σλ_i·d_i, φ = −ΔD_net / F.
+- Notation macros are defined in the preamble (`\Cb`, `\Cn`, `\Fwet`, `\Fdry`, `\dtau`, `\ind`). Use them so notation stays consistent.
+- States: 0 (before), τ (practice in place, freed water not yet used; counterfactual), 1 (after disposition). `\dtau X` = X^τ − X^0; plain Δ is state 1 minus state 0. F ≡ −Δ^τW, F_wet ≡ −Δ^τD, F_dry ≡ −Δ^τR. There is no F_X family and no ΔD_net; the net basin effect is ΔD.
+- Typology: Type A if Δ^τC_b < 0 (service cut); otherwise B if F_wet > F_dry, C if F_dry > F_wet; D if F ≈ 0.
+- The worked-example numbers (100-unit diversion, Table `tab:scenarios`, Figure `fig:sankey`) are illustrative, not estimates. If one number changes, recheck the table, the Sankey CSV, and the prose in sections 6–7 together: F = F_wet + F_dry, ΔD = −F_wet + F·Σλ_i·d_i, φ = −ΔD / F.
 - Jon's writing standards live in the GitHub repo `yoderwsu/writing-standards`; follow them for prose edits if available.
+- The interactive what-if tool lives in its own repo, `yoderwsu/water-conservation-tool`. Its model mirrors these equations and its tests pin Table `tab:scenarios`; change both together.
 - History: the framework was first drafted in a Claude Doc (https://claude.ai/artifact/McytXLpAynyy4Z8cc2zNWe). This repo is now the source of truth; don't edit the Doc in parallel.
 
 ## Overleaf workflow (direct git, no GitHub Sync)
