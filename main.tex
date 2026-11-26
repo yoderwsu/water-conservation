@@ -65,7 +65,34 @@ Evidence for this gap comes from basin models, field data, economic theory, and 
 
 Washington law already draws the key distinction, but practice is less settled. The law defines ``net water savings'' as water conserved and usable in specified reaches without impairing existing rights \citep{rcw9042020}. A recent review of conservation in eastern Washington \citep{wadraft2026} found that programs mostly estimate savings at the point of use, report them in aggregate, and seldom trace them to the source. The review also found that agricultural and municipal programs run overlapping practices without coordinating on basin outcomes.
 
-The concepts needed to close this gap exist, but they are spread across separate literatures. These include water-accounting fractions \citep{perry2007,molden1997,karimi2013}, the distinction between ``wet'' and ``dry'' savings \citep{seckler1996}, scale dependence \citep{lankford2020}, and the paracommons, which concerns who gains from a saving \citep{lankford2013,lankford2023}. This paper joins them in one parameterized identity. The identity links the effect of a practice at the point of use to basin depletion and to the timing and location of flows. It applies to any practice in any sector. Basic types follow from its specifications, and its terms map directly onto Sankey diagrams. Section~\ref{sec:contribution} compares the framework with the closest published work.
+Our objective is to build one quantitative framework that traces the water a practice frees to basin depletion and to the timing and location of river flows. Section~\ref{sec:levers} sets out five levers through which a practice changes the fate of water. Section~\ref{sec:identity} develops the framework. A change identity splits any reported saving into a wet part, which reduces depletion, and a dry part, which only removes return flow. A fate equation follows the freed water, a routing equation places gains and losses in space and time, and a shortfall measure tracks water availability. Section~\ref{sec:parameters} lists the parameters that specify a practice, and Section~\ref{sec:typology} derives a typology of four basic types and four dispositions. Section~\ref{sec:visual} proposes two-ledger Sankey diagrams to display the results, Section~\ref{sec:examples} works through illustrative irrigation and municipal cases, and Section~\ref{sec:next} sets out next steps.
+
+The paper's main contribution is to join concepts from separate literatures into one parameterized identity that applies to any practice in any sector. The water-accounting literature partitions a use into consumed and non-consumed water, beneficial and non-beneficial consumption, and recoverable and non-recoverable flow \citep{molden1997,perry2007}, and the International Commission on Irrigation and Drainage recommends this terminology at every scale \citep{perry2009}. \citet{seckler1996} distinguishes ``wet'' savings, which reduce depletion, from ``dry'' savings, which only remove water that would have returned. These frameworks describe one state of a system. They do not account for the change a practice causes, for what happens to the water it frees, or for when and where its return flows arrive. Our change identity (Equations~\eqref{eq:change} and~\eqref{eq:freed}) recasts the accounting fractions as changes between states, and the fate and routing equations (Equations~\eqref{eq:fate} and~\eqref{eq:routing}) add disposition and timing.
+
+The framework also complements basin-scale accounting and the literature on scale. \citet{karimi2013} develop Water Accounting Plus (WA+), a set of basin accounting sheets for the resource base, evapotranspiration, productivity, and withdrawal, built from remote sensing and models. WA+ describes the state of a basin; it is not designed to attribute a change to a practice or to compare practices. Our framework supplies a practice-level ledger whose terms can feed WA+ sheets. \citet{lankford2020} examines scale dependence through an irrigation efficiency matrix of five spatial scales and ten dimensions. That matrix is qualitative and limited to irrigation. In our framework, scale enters quantitatively through the accounting boundary and the routing kernel, and the same equations apply to municipal and industrial use. Because the typology rests on parameter signatures rather than technologies, it also explains why the same hardware yields a wet saving in one setting and a dry saving in another.
+
+The work closest to ours is the paracommons literature, which examines who gains from a saving \citep{lankford2013}. \citet{lankford2023} develop a spreadsheet model that reallocates irrigation savings among the proprietor, neighbours, nature, and society, and our fate equation shares that aim. Their model compares a baseline with future scenarios at steady state, without seasonality, lags, or reach-by-reach routing, and it treats nature and society as lumped residuals. Our framework adds routing in space and time, an explicit depletion fraction for each destination of freed water, generality across sectors, the typology, and co-effects such as lost evaporative cooling.
+
+The framework also gives the irrigation-efficiency paradox a general accounting form. \citet{ward2008}, \citet{pfeiffer2014}, and \citet{contor2013} document and explain how efficiency gains can raise depletion, and \citet{grafton2018} call for full water accounting, consumption caps, and risk assessment in response. These studies diagnose the rebound mechanism, but they offer no accounting form that applies across practices. In our framework, rebound is a single term, and the paradox becomes a testable sign condition: depletion rises when the reused part of the freed water consumes more than the wet saving. Empirical studies such as \citet{pfeiffer2014} could report results against that condition.
+
+Finally, the framework links conservation accounting to third-party effects and to reporting practice. The shortfall measure (Equation~\eqref{eq:shortfall}) turns changes in flow into changes in water availability at each place and time. It is a physical counterpart to the Washington test that net water savings not impair existing rights \citep{rcw9042020}. Current program reporting stops at the point of use \citep{wadraft2026}. The practice code, the wet and dry savings, the change in depletion, the efficacy ratio, and the two-ledger Sankey together form a reporting standard for funding applications and environmental review. Table~\ref{tab:contribution} summarizes the comparisons.
+
+\begin{table}[htbp]
+\centering
+\caption{Relation to the closest published frameworks.}\label{tab:contribution}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}P{2.4cm}LLL@{}}
+\toprule
+Closest work & What it provides & What it leaves open & What this framework adds \\
+\midrule
+\citet{perry2007}; \citet{perry2009} & ICID terminology: consumed (beneficial, non-beneficial) and non-consumed (recoverable, non-recoverable) fractions, recommended at every scale & A partition of one state of a system; not the change caused by a practice, the fate of freed water, or the timing of returns & Equations \eqref{eq:change}--\eqref{eq:freed} recast the fractions as a change identity; Equations \eqref{eq:fate}--\eqref{eq:routing} add disposition and timing \\
+\citet{karimi2013}, Water Accounting Plus & Basin-scale accounting sheets (resource base, ET, productivity, withdrawal) from remote sensing and models & Describes the state of a basin; not designed to attribute a change to a practice or to compare practices & A practice-level ledger whose terms can feed WA+ sheets, plus a Sankey convention per practice \\
+\citet{lankford2020} & An ``irrigation efficiency matrix'' of five spatial scales by ten dimensions & Conceptual and qualitative; irrigation only & Scale enters quantitatively through the accounting boundary and the transfer kernel; extends to municipal and industrial use \\
+\citet{lankford2023} & A spreadsheet model that reallocates irrigation savings among proprietor, neighbour, nature, and society; closest in spirit & Steady-state comparison of baseline and future scenarios, without seasonality, lags, or reach-by-reach routing; irrigation-based, with society and nature as lumped residuals & Equation \eqref{eq:routing} for location and timing, sector generality, an explicit depletion fraction for each reuse, the typology, and co-effects \\
+\citet{grafton2018}; \citet{contor2013} & Empirical and economic demonstration of the irrigation-efficiency paradox, with a call for accounting, consumption caps, and risk assessment & A diagnosis of the rebound mechanism, but no general accounting form across practices & Rebound becomes one term ($\lambda_u d_u F$) and the paradox a testable sign condition: depletion rises when $F\sum_i \lambda_i d_i > \Fwet$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 % ===========================================================================
 \section{How a practice can change the fate of water}\label{sec:levers}
@@ -270,38 +297,6 @@ The framework becomes useful once analysts assign each practice in a basin its p
   \item \textbf{Interactive tool.} Build a what-if Sankey in which managers set the practice, the setting, and $\lambda$, and see $\Delta D$, $\phi$, and seasonal $\Delta Q$ update together.
 \end{enumerate}
 One open question needs an early decision: where the accounting domain boundary should lie (district, sub-basin, or Water Resource Inventory Area). Non-recoverable outflow $N$ and the commitment status of $R$ both depend on that boundary.
-
-% ===========================================================================
-\section{Contribution to the literature}\label{sec:contribution}
-% ===========================================================================
-
-Each building block of this framework already appears in published work, but no published work joins them. This framework joins them in one quantitative object that works for any sector, includes timing and location, and yields a typology. Table~\ref{tab:contribution} compares the framework with the five most closely related bodies of work.
-
-\begin{table}[htbp]
-\centering
-\caption{Relation to the closest published frameworks.}\label{tab:contribution}
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}P{2.4cm}LLL@{}}
-\toprule
-Closest work & What it provides & What it leaves open & What this framework adds \\
-\midrule
-\citet{perry2007}; \citet{perry2009} & ICID terminology: consumed (beneficial, non-beneficial) and non-consumed (recoverable, non-recoverable) fractions, recommended at every scale & A partition of one state of a system; not the change caused by a practice, the fate of freed water, or the timing of returns & Equations \eqref{eq:change}--\eqref{eq:freed} recast the fractions as a change identity; Equations \eqref{eq:fate}--\eqref{eq:routing} add disposition and timing \\
-\citet{karimi2013}, Water Accounting Plus & Basin-scale accounting sheets (resource base, ET, productivity, withdrawal) from remote sensing and models & Describes the state of a basin; not designed to attribute a change to a practice or to compare practices & A practice-level ledger whose terms can feed WA+ sheets, plus a Sankey convention per practice \\
-\citet{lankford2020} & An ``irrigation efficiency matrix'' of five spatial scales by ten dimensions & Conceptual and qualitative; irrigation only & Scale enters quantitatively through the accounting boundary and the transfer kernel; extends to municipal and industrial use \\
-\citet{lankford2023} & A spreadsheet model that reallocates irrigation savings among proprietor, neighbour, nature, and society; closest in spirit & Steady-state comparison of baseline and future scenarios, without seasonality, lags, or reach-by-reach routing; irrigation-based, with society and nature as lumped residuals & Equation \eqref{eq:routing} for location and timing, sector generality, an explicit depletion fraction for each reuse, the typology, and co-effects \\
-\citet{grafton2018}; \citet{contor2013} & Empirical and economic demonstration of the irrigation-efficiency paradox, with a call for accounting, consumption caps, and risk assessment & A diagnosis of the rebound mechanism, but no general accounting form across practices & Rebound becomes one term ($\lambda_u d_u F$) and the paradox a testable sign condition: depletion rises when $F\sum_i \lambda_i d_i > \Fwet$ \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-A manuscript built on this framework would make five contributions:
-\begin{enumerate}
-  \item \textbf{A general identity for conservation outcomes} that holds for all five levers and all sectors, with the familiar irrigation results as special cases.
-  \item \textbf{A typology defined by parameter signatures rather than technologies}. The typology explains why the same hardware is a wet saving in one setting and a dry saving in another.
-  \item \textbf{A sign condition for rebound} against which empirical studies such as \citet{pfeiffer2014} could report results in a common form.
-  \item \textbf{An explicit link to third-party effects in time and space}, through the change in shortfall at each node and time, matching legal tests such as Washington's ``net water savings'' without impairment of existing rights.
-  \item \textbf{A reporting and visualization standard} for disclosure in funding applications and environmental review. The standard comprises the practice code, $F$, $\Fwet$, $\Fdry$, $\Delta D$, $\phi$, and the two-ledger Sankey.
-\end{enumerate}
 
 \bibliographystyle{plainnat}
 \bibliography{refs}
