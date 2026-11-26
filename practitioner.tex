@@ -69,7 +69,7 @@ Researchers have documented this gap in irrigation for decades \citep{seckler199
   \item \textbf{How much withdrawal does the practice free?} Compare the water the use needs before the practice with the water it needs after, for the same service or the reduced service, before anyone uses the freed water again. This is the \emph{reported saving}.
   \item \textbf{How much of the reported saving would have been consumed or lost?} Split the reported saving into a \emph{wet saving}, the part that would have been consumed or lost to the basin, and a \emph{dry saving}, the part that would have returned to the river or aquifer anyway.
   \item \textbf{Where does the freed water go?} It can stay in the river under legal protection, be re-applied by the same user (\emph{rebound}), be transferred to another user, or be banked in an aquifer. Each destination consumes a different share of what it receives.
-  \item \textbf{When and where do the remaining return flows arrive?} A practice that cuts seepage can leave more water in the river near the diversion early in the season and less in springs, wells, and downstream reaches later.
+  \item \textbf{When and where do the remaining return flows arrive?} A practice that cuts seepage can leave more water in the river near the diversion early in the season and less in springs, wells, and downstream reaches later. A change in flow matters to others only where and when flow already falls short of what people and fish need there. A practice can save water for the basin over a year and still deepen a late-season shortage downstream.
 \end{enumerate}
 
 % ===========================================================================
@@ -116,6 +116,7 @@ An irrigation district diverts 100 units of water. Crops use 40, other evaporati
   \item The practice type (A to D) and where the freed water goes.
   \item The share of the reported saving that becomes basin water.
   \item The expected change in flow at named downstream points, early and late in the season.
+  \item Whether the practice deepens a shortage at any point where flow already falls short of what is needed.
 \end{itemize}
 
 % ===========================================================================
@@ -151,6 +152,8 @@ Dry saving & Part of the reported saving that would have returned anyway & $F_{\
 Protected, rebound, transferred, banked shares & Shares of the freed water that go to each destination & $\lambda_s, \lambda_u, \lambda_t, \lambda_b$ \\
 Change in basin consumption & Net change in water consumed or lost to the basin & $\Delta D$ \\
 Basin share of the saving & Share of the reported saving that becomes water for the basin & Efficacy ratio $\phi$ \\
+Flow needed & Flow required at a point and time, such as an instream target or downstream demands & $\underline{Q}_k(t)$ \\
+Shortfall & Amount by which flow falls below the flow needed & $S_k(t)$ \\
 \bottomrule
 \end{tabularx}
 \end{table}

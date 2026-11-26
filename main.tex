@@ -96,7 +96,7 @@ Two consequences shape the equations that follow. First, \emph{observed withdraw
 \section{The foundational identity}\label{sec:identity}
 % ===========================================================================
 
-Any practice changes the components of the water balance of a use. Equation~\eqref{eq:partition} partitions a use. Equations~\eqref{eq:change} and~\eqref{eq:freed} account for the change a practice makes and separate the part the basin feels from the part it does not. Equation~\eqref{eq:fate} adds what happens to freed water, and Equation~\eqref{eq:routing} places the effects in space and time.
+Any practice changes the components of the water balance of a use. Equation~\eqref{eq:partition} partitions a use. Equations~\eqref{eq:change} and~\eqref{eq:freed} account for the change a practice makes and separate the part the basin feels from the part it does not. Equation~\eqref{eq:fate} adds what happens to freed water, Equation~\eqref{eq:routing} places the effects in space and time, and Equation~\eqref{eq:shortfall} turns changes in flow into changes in water availability.
 
 \paragraph{Partition of use.} Take one use within a defined accounting domain, such as a field, a district, or a utility service area. Following \citet{perry2007} and \citet{molden1997}, its withdrawal $W$ divides into depletion $D$ and recoverable return flow $R$:
 \begin{equation}\label{eq:partition}
@@ -144,6 +144,14 @@ The same two steps give the change in observed withdrawal. If all freed water th
   \;-\; \sum_{i\neq s} \lambda_i\, d_i\, F(t)\,\ind[i \to k] .
 \end{equation}
 The first term is protected water that passes node $k$, where $W_x$ is withdrawal at diversion point $x$. This water starts at the diversion point and is available early. The second term is the change in return flow from each return location $j$, negative when return flow falls. It reaches $k$ through a transfer kernel $h_{jk}$ that represents lag and attenuation ($*$ denotes convolution). The third term is new depletion by reuse upstream of $k$. Summed over a full year at a node below every return point, Equation~\eqref{eq:routing} reduces to $-\Delta D$. Between the diversion and the return points, and within the season, it does not. That gap is the timing and location problem: more water early near the diversion, less baseflow late and downstream.
+
+\paragraph{Water availability.} A change in flow matters to other water users and to the environment only where flow is short. For each node $k$ and time $t$, let $\underline{Q}_k(t)$ be the flow needed there, such as an instream flow target or the demands of users who depend on flow at $k$. The shortfall at $k$ and its change from state 0 to state 1 are
+\begin{equation}\label{eq:shortfall}
+  S_k(t) \;=\; \max\big(0,\ \underline{Q}_k(t) - Q_k(t)\big) ,
+  \qquad
+  \Delta S_k(t) \;=\; S^1_k(t) - S^0_k(t) ,
+\end{equation}
+where $Q^1_k(t) = Q^0_k(t) + \Delta Q_k(t)$ from Equation~\eqref{eq:routing}. Where flow exceeds the need in both states, $\Delta S_k(t) = 0$: the change in flow passes by without affecting anyone. Where flow falls short in both states, $\Delta S_k(t) = -\Delta Q_k(t)$, so each unit of lost flow is a unit of lost availability. A practice harms no one downstream if $\Delta S_k(t) \le 0$ at every node and time. This condition is a physical counterpart to the Washington requirement that net water savings not impair existing rights \citep{rcw9042020}. A practice can reduce basin depletion ($\Delta D < 0$) and still fail the condition, if its gains arrive where and when flow is plentiful and its losses arrive where and when flow is short. The need $\underline{Q}_k(t)$ lumps together all demands at a node; dividing a shortfall among individual rights holders requires an allocation rule, such as prior appropriation, which we leave for future work.
 
 \paragraph{Co-effects.} We can also attach to each flow an attribute vector such as heat, salinity, nutrients, or temperature. For example, the loss of evaporative cooling at a site scales with the local ET reduction, $-L_v (\dtau \Cb + \dtau \Cn)$, where $L_v$ is the latent heat of vaporization. Water quality effects follow $\dtau R$ and the loads in that return flow.
 
@@ -218,7 +226,7 @@ A two-ledger Sankey diagram draws Equations~\eqref{eq:freed} and~\eqref{eq:fate}
 \caption{Two-ledger Sankey diagrams for an illustrative 100-unit diversion (Section~\ref{sec:examples}). Blue water stays in the basin (light: early in the river; dark: late, via the aquifer); grey is depleted. $\Delta$ is the change in depletion relative to the baseline.}\label{fig:sankey}
 \end{figure}
 
-We draw every panel with the same conventions so that readers can compare panels. Every panel has the same total width. Color marks the basin fate (stays versus depleted), not the practice, so colors stay consistent across practices. Each practice code gets one panel. Three companion charts cover what a Sankey cannot. A \emph{hydrograph difference plot} shows $\Delta Q_k(t)$ from Equation~\eqref{eq:routing} at two or three named nodes, by month. It displays the early gains and late losses that net to $-\Delta D$. A \emph{network schematic} shows diversion points, return points, and receiving users or reaches, with arrows sized by the lost return flow, $-\dtau R$. It identifies who sits between a diversion and its return. The \emph{classification flow} (Figure~\ref{fig:classification}) assigns the practice code.
+We draw every panel with the same conventions so that readers can compare panels. Every panel has the same total width. Color marks the basin fate (stays versus depleted), not the practice, so colors stay consistent across practices. Each practice code gets one panel. Three companion charts cover what a Sankey cannot. A \emph{hydrograph difference plot} shows $\Delta Q_k(t)$ from Equation~\eqref{eq:routing} at two or three named nodes, by month. It displays the early gains and late losses that net to $-\Delta D$. Shading the months in which flow falls short of its need marks the changes that alter availability under Equation~\eqref{eq:shortfall}. A \emph{network schematic} shows diversion points, return points, and receiving users or reaches, with arrows sized by the lost return flow, $-\dtau R$. It identifies who sits between a diversion and its return. The \emph{classification flow} (Figure~\ref{fig:classification}) assigns the practice code.
 
 % ===========================================================================
 \section{Worked illustrations}\label{sec:examples}
@@ -244,7 +252,7 @@ Modernize, re-apply under proration & C$\cdot$rebound & 50 & 3 & 47 & $+39$ & $-
 \end{tabular}
 \end{table}
 
-The scenarios support three points. First, the largest reported saving yields the least real water: modernization reports 50 units but saves 3, while fallowing reports 20 but saves 9. Second, the rebound case is the irrigation-efficiency paradox in numbers: in the C$\cdot$rebound row, $d_u = 42/50$, so $\Delta D = -3 + 50 \times 0.84 = +39$. Third, Equation~\eqref{eq:routing} identifies effects that basin totals omit. Modernization with trust protection puts 52 units in the river near the diversion early in the season, while lagged returns fall from 45 to 6. Downstream baseflow and wells absorb that loss, as \citet{scherberg2018} modeled for the Walla Walla Basin.
+The scenarios support three points. First, the largest reported saving yields the least real water: modernization reports 50 units but saves 3, while fallowing reports 20 but saves 9. Second, the rebound case is the irrigation-efficiency paradox in numbers: in the C$\cdot$rebound row, $d_u = 42/50$, so $\Delta D = -3 + 50 \times 0.84 = +39$. Third, Equation~\eqref{eq:routing} identifies effects that basin totals omit. Modernization with trust protection puts 52 units in the river near the diversion early in the season, while lagged returns fall from 45 to 6. Downstream baseflow and wells absorb that loss, as \citet{scherberg2018} modeled for the Walla Walla Basin. Where late-season flow below the return points already falls short of its need, Equation~\eqref{eq:shortfall} converts each unit of that loss into a unit of added shortfall, even though the basin as a whole gains 3 units.
 
 \paragraph{Walla Walla.} In framework terms, canal piping in the Walla Walla Basin was Type C. \citet{scherberg2018} modeled the basin and found that piping without MAR reduced groundwater storage. Piping combined with increased MAR allowed higher summer river flows with stable groundwater storage. Here MAR, a Type D practice, supplies a deliberate return flow with chosen location and timing ($h_{jk}$), and that return flow replaces the lost seepage.
 
@@ -258,7 +266,7 @@ The framework becomes useful once analysts assign each practice in a basin its p
 \begin{enumerate}
   \item \textbf{Parameter library.} Tabulate the fractions ($\Cb$, $\Cn$, $N$, $R$), return locations, and lag classes for each common Washington practice and hydrogeologic setting. Start from published practice inventories and program records. Use ranges rather than single values so that the equations propagate uncertainty; for example, a Monte Carlo draw over the fractions gives a distribution for $\phi$.
   \item \textbf{Disclosure template.} Ask each program, funding application, and SEPA document to report $F$, $\Fwet$, $\Fdry$, and the $\lambda$ shares. Each should also report the expected sign of $\Delta Q$ at named downstream nodes in early and late season. This template turns the call for full water accounting \citep{grafton2018} into a reporting standard.
-  \item \textbf{Basin pilot.} In Walla Walla or Yakima, estimate the transfer kernels $h_{jk}$ from existing groundwater--surface water models. Use ET remote sensing to check $\dtau \Cb$ and $\dtau \Cn$, and compare the summed portfolio against observed depletion.
+  \item \textbf{Basin pilot.} In Walla Walla or Yakima, estimate the transfer kernels $h_{jk}$ from existing groundwater--surface water models, and set the flow needed at named nodes from instream flow rules and water rights records. Use ET remote sensing to check $\dtau \Cb$ and $\dtau \Cn$, and compare the summed portfolio against observed depletion.
   \item \textbf{Interactive tool.} Build a what-if Sankey in which managers set the practice, the setting, and $\lambda$, and see $\Delta D$, $\phi$, and seasonal $\Delta Q$ update together.
 \end{enumerate}
 One open question needs an early decision: where the accounting domain boundary should lie (district, sub-basin, or Water Resource Inventory Area). Non-recoverable outflow $N$ and the commitment status of $R$ both depend on that boundary.
@@ -291,7 +299,7 @@ A manuscript built on this framework would make five contributions:
   \item \textbf{A general identity for conservation outcomes} that holds for all five levers and all sectors, with the familiar irrigation results as special cases.
   \item \textbf{A typology defined by parameter signatures rather than technologies}. The typology explains why the same hardware is a wet saving in one setting and a dry saving in another.
   \item \textbf{A sign condition for rebound} against which empirical studies such as \citet{pfeiffer2014} could report results in a common form.
-  \item \textbf{An explicit link to third-party effects in time and space}, matching legal tests such as Washington's ``net water savings'' without impairment of existing rights.
+  \item \textbf{An explicit link to third-party effects in time and space}, through the change in shortfall at each node and time, matching legal tests such as Washington's ``net water savings'' without impairment of existing rights.
   \item \textbf{A reporting and visualization standard} for disclosure in funding applications and environmental review. The standard comprises the practice code, $F$, $\Fwet$, $\Fdry$, $\Delta D$, $\phi$, and the two-ledger Sankey.
 \end{enumerate}
 
