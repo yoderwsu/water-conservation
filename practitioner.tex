@@ -46,7 +46,7 @@
 \maketitle
 
 \begin{abstract}
-\todo{Draft once the venue is chosen.} Water conservation programs report how much less water a practice withdraws. A river basin, however, gains only the part of that saving that would otherwise have been consumed or lost, and only if the saved water is not used again. This guide explains, without equations, how to tell the two apart. It sorts any practice by four questions: how much withdrawal it frees, how much of that would have been consumed, where the freed water goes, and when and where the remaining return flows reach the river. Worked examples show how the practice with the largest reported saving can deliver the least water to the basin.
+\todo{Draft once the venue is chosen.} Water conservation programs report how much less water a practice withdraws. A river basin, however, gains only the part of that saving that would otherwise have been consumed or lost, and only if the saved water is not used again. This guide explains, without equations, how to tell the two apart. It sorts any practice by four questions: how much withdrawal it frees, how much of that would have been consumed, where the freed water goes, and when and where the remaining return flows reach the river. Worked examples show how the practice with the largest reported saving can deliver the smallest net savings.
 \end{abstract}
 
 % ===========================================================================
@@ -79,7 +79,7 @@ Researchers have documented this gap in irrigation for decades \citep{seckler199
 \todo{Plain-language version of the types table (tab:types) in main.tex, with Washington examples. Note that the same hardware can fall in different types in different settings.}
 
 \begin{description}[leftmargin=1.2em]
-  \item[Type A: less consumption, less service.] The practice cuts the water that crops, lawns, and gardens use: fallowing, deficit irrigation, turf removal. It saves real basin water and gives up some crop production or some lawns and gardens.
+  \item[Type A: less consumption, less service.] The practice cuts the water that crops, lawns, and gardens use: fallowing, deficit irrigation, turf removal. It produces net savings and gives up some crop production or some lawns and gardens.
   \item[Type B: less loss, same service.] The practice cuts evaporation or flow to a sink without reducing the service: evaporation control, or lining a canal over a saline aquifer.
   \item[Type C: less return flow.] The practice mostly cuts water that would have come back: lining or piping over a connected aquifer, or indoor fixtures in an inland city. The basin gains little; the timing and location of flows change.
   \item[Type D: re-timing and relocation.] The practice moves water to when and where it is needed without changing the total: managed aquifer recharge, water banking, reservoir reoperation.
@@ -94,8 +94,8 @@ Researchers have documented this gap in irrigation for decades \citep{seckler199
 An irrigation district diverts 100 units of water. Crops use 40, other evaporation takes 5, tailwater returns 10 to the river quickly, and canal seepage and deep percolation return 45 through the aquifer months later. Three options give three different answers:
 
 \begin{itemize}
-  \item \textbf{Fallow 20\% of the land and protect the saved water.} Reported saving 20; basin gain 9.
-  \item \textbf{Modernize canals and sprinklers and protect the saved water.} Reported saving 50; basin gain 3, and late-season return flow falls from 45 to 6.
+  \item \textbf{Fallow 20\% of the land and protect the saved water.} Reported saving 20; net savings 9.
+  \item \textbf{Modernize canals and sprinklers and protect the saved water.} Reported saving 50; net savings 3, and late-season return flow falls from 45 to 6.
   \item \textbf{Modernize and let the district re-apply the saved water.} Reported saving 50; basin consumption rises by 39, because the expanded irrigation consumes far more than the old system did.
 \end{itemize}
 
@@ -114,7 +114,7 @@ An irrigation district diverts 100 units of water. Crops use 40, other evaporati
 \begin{itemize}
   \item The reported saving, split into its wet and dry parts.
   \item The practice type (A to D) and where the freed water goes.
-  \item The share of the reported saving that becomes basin water.
+  \item The share of the reported saving that becomes net savings.
   \item The expected change in flow at named downstream points, early and late in the season.
   \item Whether the practice deepens a shortage at any point where flow already falls short of what is needed.
 \end{itemize}
@@ -150,8 +150,9 @@ Reported saving & Drop in withdrawal for the same service, before the freed wate
 Wet saving & Part of the reported saving that would have been consumed or lost & $F_{\mathrm{wet}}$ \\
 Dry saving & Part of the reported saving that would have returned anyway & $F_{\mathrm{dry}}$ \\
 Protected, rebound, transferred, banked shares & Shares of the freed water that go to each destination & $\lambda_s, \lambda_u, \lambda_t, \lambda_b$ \\
-Change in basin consumption & Net change in water consumed or lost to the basin & $\Delta D$ \\
-Basin share of the saving & Share of the reported saving that becomes water for the basin & Efficacy ratio $\phi$ \\
+Change in basin consumption & Change in water consumed or lost to the basin, from before the practice to after the freed water reaches its destinations & $\Delta D$ \\
+Net savings & Reduction in water consumed or lost to the basin once the freed water has reached its destinations. Unlike Washington's legal ``net water savings,'' it does not by itself test whether existing rights are impaired & $-\Delta D$ \\
+Basin share of the saving & Share of the reported saving that becomes net savings & Efficacy ratio $\phi$ \\
 Flow needed & Flow required at a point and time, such as an instream target or downstream demands & $\underline{Q}_k(t)$ \\
 Shortfall & Amount by which flow falls below the flow needed & $S_k(t)$ \\
 \bottomrule
