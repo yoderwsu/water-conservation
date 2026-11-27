@@ -1,6 +1,6 @@
 # The Fate of Conserved Water
 
-LaTeX source for a framework paper by Jonathan Yoder (School of Economic Sciences, Washington State University). The paper traces what happens to water that a conservation program reports as saved. It separates savings that reduce depletion ("wet") from savings that only remove return flow ("dry"), follows the freed water to its destinations (protection, rebound, transfer, banking), and places the gains and losses in space and time. The paper then derives a typology of practices and draws each case as a two-ledger Sankey diagram.
+LaTeX source for a framework paper by Jonathan Yoder (School of Economic Sciences, Washington State University). The paper traces what happens to water that a conservation program reports as saved. It separates savings that reduce depletion ("wet") from savings that only remove return flow ("dry"), follows the freed water to its destinations (protection, local reuse, transfer, banking), and places the gains and losses in space and time. The paper then derives a typology of practices and draws each case as a two-ledger Sankey diagram.
 
 Status: working draft for a journal submission.
 
@@ -50,7 +50,7 @@ Commit the regenerated `figures/sankey.pdf` so that Overleaf picks it up.
 | States 0, τ, 1 | Before the practice; practice in place with freed water unused; after the freed water reaches its destinations. |
 | $F = -\Delta^{\tau}W$ | Freed withdrawal, the saving programs usually report (Equation 3). |
 | $F_{\mathrm{wet}} = -\Delta^{\tau}D$, $F_{\mathrm{dry}} = -\Delta^{\tau}R$ | The parts of $F$ that reduce depletion and that only remove return flow. |
-| $\lambda_s, \lambda_u, \lambda_t, \lambda_b$ | Shares of $F$ that are protected, re-applied (rebound), transferred, and banked. |
+| $\lambda_s, \lambda_u, \lambda_t, \lambda_b$ | Shares of $F$ that are protected, reused locally by the conserving user, transferred, and banked. |
 | $\Delta D = -F_{\mathrm{wet}} + F\sum_i \lambda_i d_i$ | Change in basin depletion (Equation 4). |
 | $\varphi = -\Delta D / F$ | Efficacy ratio: the share of the reported saving that becomes basin water. |
 

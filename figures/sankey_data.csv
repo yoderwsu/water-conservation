@@ -14,8 +14,8 @@ cp,"C·protected: modernize, saving into trust",quick,Tailwater (quick return),e
 cp,"C·protected: modernize, saving into trust",seep,Seepage + percolation,late,6
 cp,"C·protected: modernize, saving into trust",oet,Other ET,dep,2
 cp,"C·protected: modernize, saving into trust",crop,Crop ET,dep,40
-cr,"C·rebound: modernize, saving re-applied",left,Left in river,early,0
-cr,"C·rebound: modernize, saving re-applied",quick,Tailwater (quick return),early,4
-cr,"C·rebound: modernize, saving re-applied",seep,Seepage + percolation,late,12
-cr,"C·rebound: modernize, saving re-applied",oet,Other ET,dep,4
-cr,"C·rebound: modernize, saving re-applied",crop,Crop ET,dep,80
+cr,"C·local reuse: modernize, saving reused",left,Left in river,early,0
+cr,"C·local reuse: modernize, saving reused",quick,Tailwater (quick return),early,4
+cr,"C·local reuse: modernize, saving reused",seep,Seepage + percolation,late,12
+cr,"C·local reuse: modernize, saving reused",oet,Other ET,dep,4
+cr,"C·local reuse: modernize, saving reused",crop,Crop ET,dep,80

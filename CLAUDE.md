@@ -1,6 +1,6 @@
 # The Fate of Conserved Water — manuscript repo
 
-Jon Yoder (Washington State University). A conceptual framework paper on what happens to "conserved" water: consumptive vs non-consumptive savings, the fate of freed water (protection, rebound, transfer, banking), and timing/location effects, with a typology and two-ledger Sankey diagrams. The target is a journal manuscript; it is written in LaTeX and edited in Overleaf.
+Jon Yoder (Washington State University). A conceptual framework paper on what happens to "conserved" water: consumptive vs non-consumptive savings, the fate of freed water (protection, local reuse, transfer, banking), and timing/location effects, with a typology and two-ledger Sankey diagrams. The target is a journal manuscript; it is written in LaTeX and edited in Overleaf.
 
 ## Files
 
@@ -16,7 +16,7 @@ Jon Yoder (Washington State University). A conceptual framework paper on what ha
 - Notation macros are defined in the preamble (`\Cb`, `\Cn`, `\Fwet`, `\Fdry`, `\dtau`, `\ind`). Use them so notation stays consistent.
 - States: 0 (before), τ (practice in place, freed water not yet used; counterfactual), 1 (after disposition). `\dtau X` = X^τ − X^0; plain Δ is state 1 minus state 0. F ≡ −Δ^τW, F_wet ≡ −Δ^τD, F_dry ≡ −Δ^τR. There is no F_X family and no ΔD_net; the net basin effect is ΔD.
 - Water availability (level 1): shortfall S_k(t) = max(0, Q̲_k(t) − Q_k(t)) against the flow needed at node k; no-harm test ΔS_k(t) ≤ 0 everywhere. Allocation among individual rights holders (prior appropriation) and value weights are deliberately left out for now; Jon chose to keep the model simple.
-- Terms: "net savings" means −ΔD (reduction in basin depletion after disposition). Don't use "real water"; don't confuse it with the statutory "net water savings" (RCW 90.42.020), which adds the no-impairment test. Appendix table `tab:definitions` in main.tex lists every term with a plain-language definition and its notation; keep it, the glossary in practitioner.tex, and the Ledger tool's glossary (plain-language, no notation) in step. Don't hyperlink terms in the manuscript text.
+- Terms: "net savings" means −ΔD (reduction in basin depletion after disposition). Don't use "real water", and don't use "rebound" for the λ_u disposition (it means water-level recovery in groundwater hydrology); call it "local reuse" (code C·local reuse) and keep "transfer" for freed water that goes to another user; don't confuse it with the statutory "net water savings" (RCW 90.42.020), which adds the no-impairment test. Appendix table `tab:definitions` in main.tex lists every term with a plain-language definition and its notation; keep it, the glossary in practitioner.tex, and the Ledger tool's glossary (plain-language, no notation) in step. Don't hyperlink terms in the manuscript text.
 - Typology: Type A if Δ^τC_b < 0 (service cut); otherwise B if F_wet > F_dry, C if F_dry > F_wet; D if F ≈ 0.
 - The worked-example numbers (100-unit diversion, Table `tab:scenarios`, Figure `fig:sankey`) are illustrative, not estimates. If one number changes, recheck the table, the Sankey CSV, and the prose in sections 6–7 together: F = F_wet + F_dry, ΔD = −F_wet + F·Σλ_i·d_i, φ = −ΔD / F.
 - Jon's writing standards live in the GitHub repo `yoderwsu/writing-standards`; follow them for prose edits if available.
